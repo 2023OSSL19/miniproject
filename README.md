@@ -2,6 +2,10 @@
 
 - 주제 소개 : 최근 배달비가 계속해서 높아지고 있는 가운데 사용자의 부담을 줄이고 보다 현명한 소비를 위해 주제를 선정.
 
+![KakaoTalk_Photo_2023-05-08-22-33-31](https://user-images.githubusercontent.com/130913514/236838869-7a047d40-76c1-4ffa-8425-8385276b268c.jpeg)
+<img width="414" alt="KakaoTalk_Photo_2023-05-08-22-33-37" src="https://user-images.githubusercontent.com/130913514/236838878-a2b74c57-f96b-4b74-bf45-31a1570119c1.png">
+
+
 - 기능
   1. 기본적인 기능은 방장과 팀원으로 나눔
   1-1. 방장 기능 : 방 만들기
