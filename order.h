@@ -1,6 +1,11 @@
-//방장 함수
-//팀원 함수
-//공통 함수
+#include <iostream>
+#include <string>
 
-
-//메뉴는 구조체로 생성..?
+class GroupDelivery{
+    private:
+        
+    public:
+        GroupDelivery();
+        ~GroupDelivery();
+        void chooseMenu();
+};
