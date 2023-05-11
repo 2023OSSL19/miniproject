@@ -21,4 +21,20 @@ void GroupDelivery::chooseMenu(){
     cout << "D: 내 예약내역 확인하기" << endl;
 
     cin >> M;
+
+    if (M=="A"){
+        cout << "방장으로써 기능 시행시키는 함수로 연결" << endl;
+    }
+    else if (M=="B"){
+        cout << "팀원으로써 기능 시행시키는 함수로 연결" << endl;
+    }
+    else if (M=="C"){
+        cout << "현재까지 추가된 방 (구조체)를 출력" << endl;
+    }
+    else if (M=="D"){
+        cout << "내 예약내역은 어떤 형태로 저장할건지 먼저 정해야함" << endl;
+    }
+    else{
+        cout << "잘못 입력 하셨습니다." << endl;
+    }
 }
