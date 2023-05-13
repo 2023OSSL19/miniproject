@@ -8,6 +8,7 @@ typedef struct {
         int phoneNumber; // 핸드폰 번호
         time t1; // 마감 시간 출력용 변수
         menu* MenuList[15]; //메뉴 공간
+        int menuCount; // 메뉴 개수
         room* link; // 다음 정보를 담는 공간
 }room; // 각 방에 담기는 정보
 
