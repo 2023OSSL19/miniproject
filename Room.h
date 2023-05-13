@@ -1,6 +1,6 @@
 # define MAX 10 // 최대 주문 개수는 10개로 제한
 # include "Menu.h"
-# include "Order.h"
+# include "order.h"
 typedef struct {
         char storeName[50]; // 가게 이름
         int account; // 계좌 번호
