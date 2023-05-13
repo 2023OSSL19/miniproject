@@ -5,3 +5,7 @@ typedef struct {
     
 
 }menu; // 메뉴 출력을 위한 struct
+void CreateMenu(Menu *m[], int *num);
+void ShowMenu(Menu *m[], int num);
+void DeleteMenu(Menu *m[], int *num);
+void UpdateMenu(Menu *m[], int num);
