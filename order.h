@@ -4,14 +4,14 @@
 
 using namespace std;
 
-struct Order{
+typedef struct {
     string name;
     string menu;
     int price;
     string phoneNum;
     string accout;
     Order* next;
-};
+}Order;
 
 class GroupDelivery{
     private:
