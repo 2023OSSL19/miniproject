@@ -1,27 +1,27 @@
 # define MAX 10 // 최대 주문 개수는 10개로 제한
 # include "Menu.h"
 # include "order.h"
-
-typedef struct {
-    char storeName[50]; // 가게 이름
-    int account; // 계좌 번호
-    int totalPrice; // 총 가격
-    bool paid = false; //결제 여부
-    int phoneNumber; // 핸드폰 번호
-    room* link; // 다음 정보를 담는 공간
-    //char place[100]; // 도착 장소
-    //time t1; // 마감 시간 출력용 변수
-    //menu* MenuList[15]; //메뉴 공간
-    //Order* order[10]; // 주문을 담는 공간
-    //int menuCount; // 메뉴 개수
-}room; // 각 방에 담기는 정보
-
-
+# include <string>
 
 typedef struct{
     int hour;
     int min;
 }time; // 시간 출력용 struct
+
+typedef struct {
+    string storeName; // 가게 이름
+    int account; // 계좌 번호
+    int totalPrice; // 총 가격
+    bool paid = false; //결제 여부
+    int phoneNumber; // 핸드폰 번호
+    room* link; // 다음 정보를 담는 공간
+    string place; // 도착 장소
+    time t1; // 마감 시간 출력용 변수
+    int storeSelection; //어떤 음식점을 선택할 것인가? -> 4~5개 가게 만들어야 함
+    Order* order[10]; // 주문을 담는 공간
+    int menuCount; // 메뉴 개수
+}room; // 각 방에 담기는 정보
+
 
 
 class Room{
@@ -40,5 +40,4 @@ class Room{
         void showMenu(); // 메뉴 출력 기능
         bool isEmpty(); // 방 유무 확인
         void updateMenu(); //메뉴 정보 업데이트
-        
 }
