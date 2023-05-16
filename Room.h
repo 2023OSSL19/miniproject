@@ -3,17 +3,17 @@
 # include "order.h"
 
 typedef struct {
-        char storeName[50]; // 가게 이름
-        int account; // 계좌 번호
-        int totalPrice; // 총 가격
-        //char place[100]; // 도착 장소
-        bool paid = false; //결제 여부
-        int phoneNumber; // 핸드폰 번호
-        //time t1; // 마감 시간 출력용 변수
-        //menu* MenuList[15]; //메뉴 공간
-        //Order* order[10]; // 주문을 담는 공간
-        //int menuCount; // 메뉴 개수
-        room* link; // 다음 정보를 담는 공간
+    char storeName[50]; // 가게 이름
+    int account; // 계좌 번호
+    int totalPrice; // 총 가격
+    bool paid = false; //결제 여부
+    int phoneNumber; // 핸드폰 번호
+    room* link; // 다음 정보를 담는 공간
+    //char place[100]; // 도착 장소
+    //time t1; // 마감 시간 출력용 변수
+    //menu* MenuList[15]; //메뉴 공간
+    //Order* order[10]; // 주문을 담는 공간
+    //int menuCount; // 메뉴 개수
 }room; // 각 방에 담기는 정보
 
 
