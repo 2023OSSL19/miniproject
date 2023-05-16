@@ -26,6 +26,8 @@ void Room::createRoom(){
     //동적할당을 통해 새로운 노드를 만든다.
     roomNode* newRoom = new roomNode();
     //새로운 노드에 입력할 데이터를 입력받는다 (출력 + 입력)
+    cout << "주문자 이름을 입력하세요: ";
+    cin >> newRoom->orderer;
     cout << "가게 이름을 입력하세요: ";
     cin >> newRoom->storeName;
     cout << "방장의 계좌번호를 입력하세요: ";
@@ -54,33 +56,35 @@ void Room::createRoom(){
     }
 };
 void Room::deleteRoom(){
-    int id;
-  cout<< "===> Type student id : ";
-  cin >> id;
-  list_node * prev;
-  list_node* curr = head;
-  while(curr != NULL && curr -> id != id){ // 값을 찾을 때까지 OR 값이 없으면
+    print(); // 전체 방 출력
+    string name; // 검색 받을 이름
+    cout<< "===> Type student name : ";
+    cin >> name;
+    roomNode * prev;
+    roomNode* curr = head;
+    while(curr != NULL && curr -> orderer != name){ // 값을 찾을 때까지 OR 값이 없으면
     prev = curr;
     curr = curr ->link;
-  }
-  if (curr!=NULL){ // 값을 찾았다면 삭제
+    }
+    if (curr!=NULL){ // 값을 찾았다면 삭제
     if(curr == head) head = curr->link;
     else prev ->link = curr ->link;
     delete curr;
-  }
-  else{
+    }
+    else{
     cout<<"There is no data"<<endl;
-  }
+    }
 };
 
 void updateRoom(){
 
 }; 
 void print(){
-  list_node *cur = NULL;
-  cout<< endl<<"id_number   name   age   score"<<endl;
+  roomNode *cur = NULL;
+  int count =1;
+  cout<< endl<<"No. id_number   name   age   score"<<endl;
   for(cur =head; cur != NULL; cur = cur->link){ // 데이터의 끝까지 출력
-    cout << cur-> id<<"   "<<cur->name <<"   "<< cur ->age<< "   "<< cur-> score<<endl;
+    cout <<count<< cur-> id<<"   "<<cur->name <<"   "<< cur ->age<< "   "<< cur-> score<<endl;
   }
 };
 void showMenu();
