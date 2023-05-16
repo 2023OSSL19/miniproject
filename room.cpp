@@ -73,8 +73,16 @@ void Room::deleteRoom(){
   }
 };
 
-void updateRoom(); 
-void print();
+void updateRoom(){
+
+}; 
+void print(){
+  list_node *cur = NULL;
+  cout<< endl<<"id_number   name   age   score"<<endl;
+  for(cur =head; cur != NULL; cur = cur->link){ // 데이터의 끝까지 출력
+    cout << cur-> id<<"   "<<cur->name <<"   "<< cur ->age<< "   "<< cur-> score<<endl;
+  }
+};
 void showMenu();
 bool isEmpty();
 void updateMenu();
