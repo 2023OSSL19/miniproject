@@ -84,5 +84,7 @@ void print(){
   }
 };
 void showMenu();
-bool isEmpty();
+bool isEmpty(){
+    return (head == NULL);
+};
 void updateMenu();
