@@ -14,6 +14,8 @@ typedef struct {
         room* link; // 다음 정보를 담는 공간
 }room; // 각 방에 담기는 정보
 
+
+
 typedef struct{
     int hour;
     int min;
@@ -28,13 +30,13 @@ class Room{
     public: 
         Room(); // constructor, 최대 방 개수 100개로 제한, 메뉴 개수 15개로 제한
         ~Room(); // destructor
-        void SearchRoom(); // 메뉴를 입력하면 방을 해당 방을 출력, 사용자에서 사용
-        void CreateRoom(); // 방 생성, 방장에서만 사용
-        void DeleteRoom(); // 방 삭제, 방장에서만 사용
-        void UpdateRoom(); // 방 정보 업데이트, 방장에서만 사용
-        void Print(); // 전체 방 정보 출력, 사용자에서 사용
-        void ShowMenu(); // 메뉴 출력 기능
-        bool IsEmpty(); // 방 유무 확인
-        void UpdateMenu(); //메뉴 정보 업데이트
+        void searchRoom(); // 메뉴를 입력하면 방을 해당 방을 출력, 사용자에서 사용
+        void createRoom(); // 방 생성, 방장에서만 사용
+        void deleteRoom(); // 방 삭제, 방장에서만 사용
+        void updateRoom(); // 방 정보 업데이트, 방장에서만 사용
+        void print(); // 전체 방 정보 출력, 사용자에서 사용
+        void showMenu(); // 메뉴 출력 기능
+        bool isEmpty(); // 방 유무 확인
+        void updateMenu(); //메뉴 정보 업데이트
         
 }
