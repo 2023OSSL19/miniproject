@@ -11,6 +11,7 @@ struct time{
 }; // 시간 출력용 st
 
 struct roomNode{
+    string orderer; // 검색 삭제를 위한 변수 -> 입력 받기
     string storeName; // 가게 이름 -> 입력 받기
     int account; // 계좌 번호 -> 입력 받기
     //int totalPrice; // 총 가격 -> 계산 인데, 일단 입력
