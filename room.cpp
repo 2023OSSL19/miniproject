@@ -54,7 +54,23 @@ void Room::createRoom(){
     }
 };
 void Room::deleteRoom(){
-
+    int id;
+  cout<< "===> Type student id : ";
+  cin >> id;
+  list_node * prev;
+  list_node* curr = head;
+  while(curr != NULL && curr -> id != id){ // 값을 찾을 때까지 OR 값이 없으면
+    prev = curr;
+    curr = curr ->link;
+  }
+  if (curr!=NULL){ // 값을 찾았다면 삭제
+    if(curr == head) head = curr->link;
+    else prev ->link = curr ->link;
+    delete curr;
+  }
+  else{
+    cout<<"There is no data"<<endl;
+  }
 };
 
 void updateRoom(); 
