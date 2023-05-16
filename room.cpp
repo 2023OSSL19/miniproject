@@ -53,3 +53,12 @@ void Room::createRoom(){
         current->next = newRoom;
     }
 };
+void Room::deleteRoom(){
+
+};
+
+void updateRoom(); 
+void print();
+void showMenu();
+bool isEmpty();
+void updateMenu();
