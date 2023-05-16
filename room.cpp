@@ -81,10 +81,9 @@ void updateRoom(){
 }; 
 void print(){
   roomNode *cur = NULL;
-  int count =1;
-  cout<< endl<<"No. id_number   name   age   score"<<endl;
+  cout<< endl<<"Orderer   Store   Account   Phonenumber    Place   Time"<<endl;
   for(cur =head; cur != NULL; cur = cur->link){ // 데이터의 끝까지 출력
-    cout <<count<< cur-> id<<"   "<<cur->name <<"   "<< cur ->age<< "   "<< cur-> score<<endl;
+    cout << cur-> orderer<<"   "<<cur->storeName <<"   "<< cur ->account<< "   "<< cur-> phoneNum<<"    " <<cur ->place<<"    "<< <<endl; // time 구현 못함
   }
 };
 void showMenu();
