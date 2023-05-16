@@ -1,32 +1,34 @@
-# define MAX 10 // 최대 주문 개수는 10개로 제한
-# include "menu.h"
-# include "order.h"
-# include <string>
+#define MAX 10 // 최대 주문 개수는 10개로 제한
+//#include "menu.h"
+//#include "order.h"
+#include <string>
 
-typedef struct{
+using namespace std;
+
+struct time{
     int hour;
     int min;
-}time; // 시간 출력용 struct
+}; // 시간 출력용 st
 
-typedef struct {
+struct roomNode{
     string storeName; // 가게 이름 -> 입력 받기
     int account; // 계좌 번호 -> 입력 받기
-    int totalPrice; // 총 가격 -> 계산 인데, 일단 입력
-    int phoneNumber; // 핸드폰 번호 -> 입력
+    //int totalPrice; // 총 가격 -> 계산 인데, 일단 입력
+    int phoneNum; // 핸드폰 번호 -> 입력
     string place; // 도착 장소 -> 입력
-    time t1; // 마감 시간 출력용 변수 -> 입력
+    //time t1; // 마감 시간 출력용 변수 -> 입력
     int storeSelection; //어떤 음식점을 선택할 것인가? -> 4~5개 가게 만들어야 함 -> 입력 -> 메뉴 4개 만들어야 함
     //Order* order; // 주문을 담는 공간
     //int menuCount; // 메뉴 개수
-    room* next; // 
-}room; // 각 방에 담기는 정보
+    roomNode* next; // 
+}; // 각 방에 담기는 정보
 
 
 
 class Room{
     private :
         int count; // 방의 개수
-        room* head = nullptr; // linked list로 구현 head
+        roomNode* head; // linked list로 구현 head
 
     public: 
         Room(); // constructor, 최대 방 개수 100개로 제한, 메뉴 개수 15개로 제한
@@ -39,4 +41,4 @@ class Room{
         void showMenu(); // 메뉴 출력 기능
         bool isEmpty(); // 방 유무 확인
         void updateMenu(); //메뉴 정보 업데이트
-}
+};
