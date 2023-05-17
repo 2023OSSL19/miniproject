@@ -76,18 +76,25 @@ void Room::deleteRoom(){
     }
 };
 
-void updateRoom(){
+void Room::updateRoom(){
 
 }; 
-void print(){
+void Room::print(){
   roomNode *cur = NULL;
   cout<< endl<<"Orderer   Store   Account   Phonenumber    Place   Time"<<endl;
   for(cur =head; cur != NULL; cur = cur->link){ // 데이터의 끝까지 출력
     cout << cur-> orderer<<"   "<<cur->storeName <<"   "<< cur ->account<< "   "<< cur-> phoneNum<<"    " <<cur ->place<<"    "<< <<endl; // time 구현 못함
   }
 };
-void showMenu();
-bool isEmpty(){
+void Room::showMenu(){
+
+};
+bool Room::isEmpty(){
     return (head == NULL);
 };
-void updateMenu();
+void Room::updateMenu(){
+    print(); // 전체 방 출력
+    string name; // 검색 받을 이름
+    cout<< "===> Type student name : ";
+    cin >> name;
+};
