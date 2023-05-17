@@ -97,4 +97,10 @@ void Room::updateMenu(){
     string name; // 검색 받을 이름
     cout<< "===> Type student name : ";
     cin >> name;
+    while(curr != NULL && curr -> orderer != name){ // 값을 찾을 때까지 OR 값이 없으면
+    prev = curr;
+    curr = curr ->link;
+    }
+    if (curr!=NULL)
+
 };
