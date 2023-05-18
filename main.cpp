@@ -11,7 +11,7 @@ Room* functions(){
     cout << "C: 방 목록보기" << endl;
     cout << "원하시는 기능을 선택하세요: ";
     cin >> m;
-    
+    cout << "d"
     Room* order = new Room();
     
 
