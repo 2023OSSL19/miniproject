@@ -13,9 +13,11 @@ Room::~Room(){
     roomNode* current = head;
     //헤드부터 시작해 하나씩 노드를 건너가며 동적할당 된 메모리를 지워준다
     //만약 현재 노드가 비워져있다면 반복문을 종료한다.
+    while(current != nullptr){
         roomNode* next = current -> next;
         delete current;
         current = next;
+    }
     //마지막으로 헤드만 남았다면 헤드를 초기화 해준다.
     head = nullptr;
 };
@@ -60,15 +62,15 @@ void Room::createRoom(){
 void Room::deleteRoom(){
     printRoom(); // 전체 방 출력
     string name; // 검색 받을 이름
-    cout<< "===> 삭제할 방을 입력하세요.: ";
+    cout<< "===> 삭제할 방을 입력하세요: ";
     cin >> name;
-    roomNode * prev;
+    roomNode * prev = nullptr;
     roomNode* current = head;
-    while(current != NULL && current -> orderer != name){ // 값을 찾을 때까지 OR 값이 없으면
+    while(current != nullptr && current -> orderer != name){ // 값을 찾을 때까지 OR 값이 없으면
         prev = current;
         current = current ->next;
     }
-    if (current!=NULL){ // 값을 찾았다면 삭제
+    if (current!=nullptr){ // 값을 찾았다면 삭제
         if(current == head)
             head = current->next;
         else
@@ -99,18 +101,37 @@ bool Room::isEmpty(){
 };
 
 
-//미완
-void Room::updateMenu(){
-    roomNode* current;
-    roomNode* prev;
-
+*/
+void Room::updateRoom(){
     printRoom(); // 전체 방 출력
+    roomNode* current = head;
+    roomNode* prev = nullptr;
     string name; // 검색 받을 이름
-    cout<< "===> Type student name : ";
+    cout<< "===> : 업데이트할 방을 입력하세요: ";
     cin >> name;
-    while(current != NULL && current -> orderer != name){ // 값을 찾을 때까지 OR 값이 없으면
-    prev = current;
-    current = current ->next;
+    while(current != nullptr && current -> orderer != name){ // 값을 찾을 때까지 OR 값이 없으면
+        prev = current;
+        current = current ->next;
     }
-    if (current!=NULL)
-};*/
+    if (current!=nullptr){
+        cout << "주문자 이름을 입력하세요: ";
+        cin >> current->orderer;
+        cout << "가게 이름을 입력하세요: ";
+        cin >> current->storeName;
+        cout << "방장의 계좌번호를 입력하세요: ";
+        cin >> current->account;
+        cout << "방장의 핸드폰 번호를 입력하세요: ";
+        cin >> current->phoneNum;
+        cout << "주문을 배달 받을 장소의 주소를 입력하세요: ";
+        cout << "주문을 배달 받을 장소의 주소를 입력하세요: ";
+        cin >> current->place;
+        printRoom();
+        cout << "업데이트가 완료 되었습니다." << endl;
+    }
+    
+    else{
+        cout << "방을 찾을 수 없습니다." << endl;
+    }
+
+
+};

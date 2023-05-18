@@ -45,9 +45,8 @@ int main(){
         Room* a = functions();
         a->createRoom();
         a->createRoom();
-        a->printRoom();
         a->deleteRoom();
-        a->printRoom();
+        a->updateRoom();
     }
     else{
         cout << "로그인에 실패하셨습니다." << endl;
