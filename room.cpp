@@ -32,7 +32,7 @@ void Room::createRoom(){
     cin >> newRoom->account;
     cout << "방장의 핸드폰 번호를 입력하세요: ";
     cin >> newRoom->phoneNum;
-    cout << "주문을 배달 받을 장소의 주소를 입력하세요";
+    cout << "주문을 배달 받을 장소의 주소를 입력하세요: ";
     cin >> newRoom->place;
     //cout << "주문 마감 시간을 입력하세요 (x시 x분), x만 입력해주세요";
     //cin >> newRoom->time->hour >> newRoom->time->min;
@@ -83,7 +83,8 @@ void Room::deleteRoom(){
 
 void Room::updateRoom(){
 
-}; 
+};
+*/
 void Room::printRoom(){
   roomNode *cur = NULL;
   cout<< endl<<"Orderer   Store   Account   Phonenumber    Place   Time"<<endl;
@@ -91,6 +92,7 @@ void Room::printRoom(){
     cout << cur-> orderer << "   " << cur->storeName << "   " << cur ->account << "   " << cur-> phoneNum << "    " << cur ->place << "    " <<endl; // time 구현 못함
   }
 };
+/*
 void Room::showMenu(){
 
 };
