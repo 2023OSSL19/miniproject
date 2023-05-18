@@ -23,7 +23,7 @@ Room::~Room(){
 void Room::createRoom(){
     //동적할당을 통해 새로운 노드를 만든다.
     roomNode* newRoom = new roomNode();
-    //새로운 노드에 입력할 데이터를 입력받는다 (출력 + 입력)
+   //새로운 노드에 입력할 데이터를 입력받는다 (출력 + 입력)
     cout << "주문자 이름을 입력하세요: ";
     cin >> newRoom->orderer;
     cout << "가게 이름을 입력하세요: ";
@@ -56,7 +56,7 @@ void Room::createRoom(){
 };
 
 //밑으로 전부 미완
-/*
+
 void Room::deleteRoom(){
     printRoom(); // 전체 방 출력
     string name; // 검색 받을 이름
@@ -80,7 +80,7 @@ void Room::deleteRoom(){
     }
     this->count--;
 };
-
+/*
 void Room::updateRoom(){
 
 };
@@ -93,17 +93,6 @@ void Room::printRoom(){
   }
 };
 
-void Room::showMenu(){
-    switch (storeSelection)
-    {
-    case /* constant-expression */:
-        /* code */
-        break;
-    
-    default:
-        break;
-    }
-};
 /*
 bool Room::isEmpty(){
     return (head == NULL);
