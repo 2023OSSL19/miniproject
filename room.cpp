@@ -92,10 +92,19 @@ void Room::printRoom(){
     cout << cur-> orderer << "   " << cur->storeName << "   " << cur ->account << "   " << cur-> phoneNum << "    " << cur ->place << "    " <<endl; // time 구현 못함
   }
 };
-/*
-void Room::showMenu(){
 
+void Room::showMenu(){
+    switch (storeSelection)
+    {
+    case /* constant-expression */:
+        /* code */
+        break;
+    
+    default:
+        break;
+    }
 };
+/*
 bool Room::isEmpty(){
     return (head == NULL);
 };
