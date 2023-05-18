@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "room.h"
+#include "Room.h"
 
 
 Room::Room(){
@@ -13,11 +13,9 @@ Room::~Room(){
     roomNode* current = head;
     //헤드부터 시작해 하나씩 노드를 건너가며 동적할당 된 메모리를 지워준다
     //만약 현재 노드가 비워져있다면 반복문을 종료한다.
-    while(current != nullptr){
         roomNode* next = current -> next;
         delete current;
         current = next;
-    }
     //마지막으로 헤드만 남았다면 헤드를 초기화 해준다.
     head = nullptr;
 };
@@ -56,23 +54,26 @@ void Room::createRoom(){
     }
     this->count++;
 };
+
+//밑으로 전부 미완
+/*
 void Room::deleteRoom(){
     printRoom(); // 전체 방 출력
     string name; // 검색 받을 이름
     cout<< "===> 삭제할 방을 입력하세요.: ";
     cin >> name;
     roomNode * prev;
-    roomNode* curr = head;
-    while(curr != NULL && curr -> orderer != name){ // 값을 찾을 때까지 OR 값이 없으면
-        prev = curr;
-        curr = curr ->link;
+    roomNode* current = head;
+    while(current != NULL && current -> orderer != name){ // 값을 찾을 때까지 OR 값이 없으면
+        prev = current;
+        current = current ->next;
     }
-    if (curr!=NULL){ // 값을 찾았다면 삭제
-        if(curr == head)
-            head = curr->link;
+    if (current!=NULL){ // 값을 찾았다면 삭제
+        if(current == head)
+            head = current->next;
         else
-            prev ->link = curr ->link;
-        delete curr;
+            prev ->next = current ->next;
+        delete current;
     }
     else{
         cout<<"There is no data"<<endl;
@@ -86,8 +87,8 @@ void Room::updateRoom(){
 void Room::printRoom(){
   roomNode *cur = NULL;
   cout<< endl<<"Orderer   Store   Account   Phonenumber    Place   Time"<<endl;
-  for(cur =head; cur != NULL; cur = cur->link){ // 데이터의 끝까지 출력
-    cout << cur-> orderer<<"   "<<cur->storeName <<"   "<< cur ->account<< "   "<< cur-> phoneNum<<"    " <<cur ->place<<"    "<< <<endl; // time 구현 못함
+  for(cur =head; cur != NULL; cur = cur->next){ // 데이터의 끝까지 출력
+    cout << cur-> orderer << "   " << cur->storeName << "   " << cur ->account << "   " << cur-> phoneNum << "    " << cur ->place << "    " <<endl; // time 구현 못함
   }
 };
 void Room::showMenu(){
@@ -97,14 +98,19 @@ bool Room::isEmpty(){
     return (head == NULL);
 };
 
+
+//미완
 void Room::updateMenu(){
+    roomNode* current;
+    roomNode* prev;
+
     printRoom(); // 전체 방 출력
     string name; // 검색 받을 이름
     cout<< "===> Type student name : ";
     cin >> name;
-    while(curr != NULL && curr -> orderer != name){ // 값을 찾을 때까지 OR 값이 없으면
-    prev = curr;
-    curr = curr ->link;
+    while(current != NULL && current -> orderer != name){ // 값을 찾을 때까지 OR 값이 없으면
+    prev = current;
+    current = current ->next;
     }
-    if (curr!=NULL)
-};
+    if (current!=NULL)
+};*/
