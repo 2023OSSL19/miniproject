@@ -2,7 +2,6 @@
 #include <string>
 #include "Room.h"
 
-
 Room::Room(){
     head = nullptr;
     count = 0;
@@ -54,7 +53,8 @@ void Room::createRoom(){
         //꼬리가 빈 노드를 찾았다면 그 노드에 newNode를 연결시킨다
         current->next = newRoom;
     }
-    this->count++;
+    cout << "\n방이 생성되었습니다!" << endl;
+    printRoom();
 };
 
 //밑으로 전부 미완
@@ -78,7 +78,7 @@ void Room::deleteRoom(){
         delete current;
     }
     else{
-        cout<<"There is no data"<<endl;
+        cout<<"방을 찾을 수 없습니다."<<endl;
     }
     this->count--;
 };
@@ -91,8 +91,9 @@ void Room::printRoom(){
   roomNode *cur = NULL;
   cout<< endl<<"Orderer   Store   Account   Phonenumber    Place   Time"<<endl;
   for(cur =head; cur != NULL; cur = cur->next){ // 데이터의 끝까지 출력
-    cout << cur-> orderer << "   " << cur->storeName << "   " << cur ->account << "   " << cur-> phoneNum << "    " << cur ->place << "    " <<endl; // time 구현 못함
+    cout << cur-> orderer << "   " << cur->storeName << "   " << cur ->account << "   " << cur-> phoneNum << "    " << cur ->place << "    \n" <<endl; // time 구현 못함
   }
+
 };
 
 /*
@@ -128,7 +129,7 @@ void Room::updateRoom(){
         printRoom();
         cout << "업데이트가 완료 되었습니다." << endl;
     }
-    
+
     else{
         cout << "방을 찾을 수 없습니다." << endl;
     }

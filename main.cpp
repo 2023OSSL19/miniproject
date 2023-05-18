@@ -5,18 +5,35 @@
 
 using namespace std;
 
-Room* functions(){
+string fristSelection(){
     string m;
-    cout << "A: 방 만들기" << endl;
-    cout << "B: 방 참여하기" << endl;
+    cout << "\nA: 방장 권한으로 참여하기" << endl;
+    cout << "B: 팀원 권한으로 참여하기" << endl;
     cout << "C: 방 목록보기" << endl;
+    cout << "0: 종료" << endl;
+    cout << "원하시는 기능을 선택하세요: ";
+    cin >> m;
+    if (m == "0")
+        exit(0);
+
+    return m;
+}
+
+string leaderSelection(){
+    string m;
+    cout << "\nA: 방 만들기" << endl;
+    cout << "B: 방정보 수정하기" << endl;
+    cout << "C: 방 삭제하기" << endl;
+    cout << "D: 방정보 보기" << endl;
     cout << "원하시는 기능을 선택하세요: ";
     cin >> m;
 
-    Room* order = new Room();
-
-    return order;
+    return m;
 }
+/*
+string memberSelection(){
+
+}*/
 
 bool logIn(){
     string inputId;
@@ -40,13 +57,22 @@ bool logIn(){
 }
 
 int main(){
-    if (logIn()){
-        cout << "로그인에 성공하셨습니다" << endl;
-        Room* a = functions();
-        a->createRoom();
-        a->createRoom();
-        a->deleteRoom();
-        a->updateRoom();
+    if(logIn()){
+        cout << "\n로그인에 성공하셨습니다!" << endl;
+        Room* a = new Room;
+        //Order* b;
+        while(1){
+            if (fristSelection() == "A"){
+                if(leaderSelection() == "A")a
+                    a->createRoom();
+                else if (leaderSelection() == "B")
+                    a->deleteRoom();
+                else if (leaderSelection() == "C")
+                    a->updateRoom();
+                else if (leaderSelection() == "D")
+                    a->printRoom();
+            }
+        }
     }
     else{
         cout << "로그인에 실패하셨습니다." << endl;
@@ -55,6 +81,3 @@ int main(){
 
     return 0;
 }
-
-
-

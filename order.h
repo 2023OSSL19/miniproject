@@ -23,12 +23,11 @@ class Order{
     public: 
         Order(); // constructor, 최대 방 개수 100개로 제한, 메뉴 개수 15개로 제한
         ~Order(); // destructor
-        void searchOrder(); 
+        //void searchOrder(); 
         void createOrder();  
         void deleteOrder();  
-        void updateOrder();  
+        //void updateOrder();  
         void print(); 
-        void showOrder();  
-        bool isEmpty();  
-        void updateOrder(); 
+        //void showOrder();  
+        //bool isEmpty();   
 }
