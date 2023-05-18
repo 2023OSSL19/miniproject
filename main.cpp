@@ -14,12 +14,21 @@ Room* functions(){
     cin >> m;
 
     Room* order = new Room();
-    
 
     return order;
 }
 
-bool logIn(const string& inputId,const string& inputPw){
+bool logIn(){
+    string inputId;
+    string inputPw;
+
+    cout << "어플에 오신걸 환영합니다!" << endl;
+    cout << "id와 비밀번호를 입력해주세요." << endl;
+    cout << "id: ";
+    cin >> inputId;
+    cout << "pw: ";
+    cin >> inputPw;
+
     ifstream inputFile("id_pw.txt");
     string id, pw;
 
@@ -31,17 +40,9 @@ bool logIn(const string& inputId,const string& inputPw){
 }
 
 int main(){
-    string id;
-    string pw;
+    
 
-    cout << "어플에 오신걸 환영합니다!" << endl;
-    cout << "id와 비밀번호를 입력해주세요." << endl;
-    cout << "id: ";
-    cin >> id;
-    cout << "pw: ";
-    cin >> pw;
-
-    if (logIn(id,pw)){
+    if (logIn()){
         cout << "로그인에 성공하셨습니다" << endl;
         Room* a = functions();
         a->createRoom();
