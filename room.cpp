@@ -37,7 +37,7 @@ void Room::createRoom(){
     cout << "주문을 배달 받을 장소의 주소를 입력하세요";
     cin >> newRoom->place;
     //cout << "주문 마감 시간을 입력하세요 (x시 x분), x만 입력해주세요";
-   // cin >> newRoom->time->hour >> newRoom->time->min;
+    //cin >> newRoom->time->hour >> newRoom->time->min;
     
     //새로운 노드의 연결고리를 비워둔다.
     newRoom->next = nullptr;
@@ -54,32 +54,36 @@ void Room::createRoom(){
         //꼬리가 빈 노드를 찾았다면 그 노드에 newNode를 연결시킨다
         current->next = newRoom;
     }
+    this->count++;
 };
 void Room::deleteRoom(){
-    print(); // 전체 방 출력
+    printRoom(); // 전체 방 출력
     string name; // 검색 받을 이름
-    cout<< "===> Type student name : ";
+    cout<< "===> 삭제할 방을 입력하세요.: ";
     cin >> name;
     roomNode * prev;
     roomNode* curr = head;
     while(curr != NULL && curr -> orderer != name){ // 값을 찾을 때까지 OR 값이 없으면
-    prev = curr;
-    curr = curr ->link;
+        prev = curr;
+        curr = curr ->link;
     }
     if (curr!=NULL){ // 값을 찾았다면 삭제
-    if(curr == head) head = curr->link;
-    else prev ->link = curr ->link;
-    delete curr;
+        if(curr == head)
+            head = curr->link;
+        else
+            prev ->link = curr ->link;
+        delete curr;
     }
     else{
-    cout<<"There is no data"<<endl;
+        cout<<"There is no data"<<endl;
     }
+    this->count--;
 };
 
 void Room::updateRoom(){
 
 }; 
-void Room::print(){
+void Room::printRoom(){
   roomNode *cur = NULL;
   cout<< endl<<"Orderer   Store   Account   Phonenumber    Place   Time"<<endl;
   for(cur =head; cur != NULL; cur = cur->link){ // 데이터의 끝까지 출력
@@ -92,8 +96,9 @@ void Room::showMenu(){
 bool Room::isEmpty(){
     return (head == NULL);
 };
+
 void Room::updateMenu(){
-    print(); // 전체 방 출력
+    printRoom(); // 전체 방 출력
     string name; // 검색 받을 이름
     cout<< "===> Type student name : ";
     cin >> name;
@@ -102,5 +107,4 @@ void Room::updateMenu(){
     curr = curr ->link;
     }
     if (curr!=NULL)
-
 };
