@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <string>
 #include "Room.h"
 
@@ -18,14 +19,40 @@ Room* functions(){
     return order;
 }
 
+bool logIn(const string& inputId,const string& inputPw){
+    ifstream inputFile("id_pw.txt");
+    string id, pw;
+
+    while(inputFile >> id >> pw){
+        if (id == inputId && pw == inputPw)
+            return true;
+    }
+    return false;
+}
+
 int main(){
-    cout << "어플에 오신걸 환영합니다" << endl;
-    Room* a = functions();
-    a->createRoom();
-    a->createRoom();
-    a->printRoom();
-    a->deleteRoom();
-    a->printRoom();
+    string id;
+    string pw;
+
+    cout << "어플에 오신걸 환영합니다!" << endl;
+    cout << "id와 비밀번호를 입력해주세요." << endl;
+    cout << "id: ";
+    cin >> id;
+    cout << "pw: ";
+    cin >> pw;
+
+    if (logIn(id,pw)){
+        cout << "로그인에 성공하셨습니다" << endl;
+        Room* a = functions();
+        a->createRoom();
+        a->createRoom();
+        a->printRoom();
+        a->deleteRoom();
+        a->printRoom();
+    }
+    else{
+        cout << "로그인에 실패하셨습니다." << endl;
+    }
 
 
     return 0;
