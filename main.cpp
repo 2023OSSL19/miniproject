@@ -40,8 +40,6 @@ bool logIn(){
 }
 
 int main(){
-    
-
     if (logIn()){
         cout << "로그인에 성공하셨습니다" << endl;
         Room* a = functions();
