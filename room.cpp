@@ -81,7 +81,6 @@ void Room::createRoom(){
     printRoom();
 };
 
-//밑으로 전부 미완
 
 void Room::deleteRoom(){
     printRoom(); // 전체 방 출력
@@ -106,11 +105,6 @@ void Room::deleteRoom(){
     }
     this->count--;
 };
-/*
-void Room::updateRoom(){
-
-};
-*/
 void Room::printRoom(){
   roomNode *cur = NULL;
   cout<< endl<<"Orderer   Store  Bank Account   Phonenumber    Place   Time"<<endl;
@@ -141,13 +135,16 @@ void Room::updateRoom(){
         cin >> current->orderer;
         cout << "가게 이름을 입력하세요: ";
         cin >> current->storeName;
+        cout << "은행을 입력하세요: ";
+        cin >> current -> bank;
         cout << "방장의 계좌번호를 입력하세요: ";
         cin >> current->account;
         cout << "방장의 핸드폰 번호를 입력하세요: ";
         cin >> current->phoneNum;
         cout << "주문을 배달 받을 장소의 주소를 입력하세요: ";
-        cout << "주문을 배달 받을 장소의 주소를 입력하세요: ";
         cin >> current->place;
+        out << "주문 마감 시간을 입력하세요 (x시 x분), x만 입력해주세요";
+        cin >> current -> t1.hour >> t1.min;
         printRoom();
         cout << "업데이트가 완료 되었습니다." << endl;
     }
