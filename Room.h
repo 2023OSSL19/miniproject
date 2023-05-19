@@ -42,4 +42,5 @@ class Room{
         void printRoom(); // 전체 방 정보 출력, 사용자에서 사용
         //void showMenu(); // 메뉴 출력 기능
         bool isEmpty(); // 방 유무 확인
+        int getStoreSeletion(); // 메뉴 번호 return
 };
