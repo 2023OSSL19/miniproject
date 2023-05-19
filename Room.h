@@ -14,6 +14,7 @@ struct roomNode{
     string orderer; // 검색 삭제를 위한 변수 -> 입력 받기
     string storeName; // 가게 이름 -> 입력 받기
     int account; // 계좌 번호 -> 입력 받기
+    string bank; // 은행
     //int totalPrice; // 총 가격 -> 계산 인데, 일단 입력
     int phoneNum; // 핸드폰 번호 -> 입력
     string place; // 도착 장소 -> 입력
