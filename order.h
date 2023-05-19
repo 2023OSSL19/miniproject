@@ -31,7 +31,7 @@ class Order{
         void createOrder();
         //void deleteOrder();
         //void updateOrder();  
-        void printMenu(storeMenu* menuList,int count);
+        void printMenu();
         //void printOrder(); 
         //void showOrder();  
         //bool isEmpty();   

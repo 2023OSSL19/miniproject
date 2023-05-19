@@ -88,8 +88,12 @@ int main(){
             }
             else if (big_selection == "B"){
                 member = memberSelection();
-                if(member == "A")
+                if(member == "A"){
                     b->createOrder();
+                }
+                else if (member == "D"){
+                    b->printMenu();
+                }
             }
         }
     }

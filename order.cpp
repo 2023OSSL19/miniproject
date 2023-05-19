@@ -92,7 +92,6 @@ void Order::createOrder(){
     cin >> selectStore;
     if (selectStore == "A"){
         newOrder->storeName = "교폰치킨";
-        printMenu(chikenStore,7);
     }
     else if (selectStore == "B"){
         newOrder->storeName = "덥덥팦";
