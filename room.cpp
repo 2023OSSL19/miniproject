@@ -27,8 +27,8 @@ void Room::createRoom(){
    //새로운 노드에 입력할 데이터를 입력받는다 (출력 + 입력)
     cout << "주문자 이름을 입력하세요: ";
     cin >> newRoom->orderer;
-    cout << "가게 이름을 입력하세요: ";
-    cin >> newRoom->storeName;
+    cout << "가게 번호를 입력하세요: ";
+    cin >> newRoom->storeSelection;
     cout << "방장의 계좌번호를 입력하세요: ";
     cin >> newRoom->account;
     cout << "방장의 핸드폰 번호를 입력하세요: ";
