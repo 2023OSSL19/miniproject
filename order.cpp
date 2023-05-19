@@ -8,27 +8,61 @@ using namespace std;
 
 #define Max 20
 
+storeMenu* chikenStore = new storeMenu[Max];
+storeMenu* riceStore = new storeMenu[Max];
+storeMenu* coffeeStore = new storeMenu[Max];
+storeMenu* padackStore = new storeMenu[Max];
+
 Order::Order(){
     head = nullptr;
     count = 0;
-    ifstream inputFile("교폰치킨.txt");
-    storeMenu* chikenStore = new storeMenu[Max];
+    //교폰치킨 정보 불러오기
+    ifstream chieken("교폰치킨.txt");
 
-    int count = 0;
+    int index = 0;
     string menuName;
     int price;
 
-    while(count < Max && inputFile >> menuName >> price){
-        chikenStore[count].menuName = menuName;
-        chikenStore[count].price = price;
-        count++;
+    while(index < Max && chieken >> menuName >> price){
+        chikenStore[index].menuName = menuName;
+        chikenStore[index].price = price;
+        index++;
     }
-    inputFile.close();
-    printMenu(chikenStore,count);
+    chieken.close();
+    //덥덥팦 정보 불러오기
+    ifstream rice("덥덥팦.txt");
+    
+    index = 0;
 
-    //storeMenu* riceStore[] = new storeMenu[Max];
-    //storeMenu* coffeeStore[] = new storeMenu[Max];
-    //storeMenu* padackStore[] = new storeMenu[Max];
+    while(index < Max && rice >> menuName >> price){
+        riceStore[index].menuName = menuName;
+        riceStore[index].price = price;
+        index++;
+    }
+    rice.close();
+    //어디야커피 정보 불러오기
+    ifstream coffee("어디야커피.txt");
+        
+    index = 0;
+
+    while(index < Max && coffee >> menuName >> price){
+        coffeeStore[index].menuName = menuName;
+        coffeeStore[index].price = price;
+        index++;
+    }
+    coffee.close();
+    //치코파턱정보 불러오기
+    ifstream padack("치코파덕.txt");
+    
+    index = 0;
+
+    while(index < Max && padack >> menuName >> price){
+        padackStore[index].menuName = menuName;
+        padackStore[index].price = price;
+        index++;
+    }
+    padack.close();
+    
 };
 
 Order::~Order(){
@@ -48,8 +82,27 @@ void Order::createOrder(){
     //동적할당을 통해 새로운 노드를 만든다.
     orderNode* newOrder = new orderNode();
    //새로운 노드에 입력할 데이터를 입력받는다 (출력 + 입력)
-    cout << "가게를 선택하세요: ";
-    cin >> newOrder->storeName;
+    cout << "\n주문 가능한 가게 목록" << endl;
+    cout << "A: 교폰치킨" << endl;
+    cout << "B: 덥덥팝" << endl;
+    cout << "C: 어디야커피" << endl;
+    cout << "D: 치코파덕" << endl;
+    cout << "주문을 진행할 가게를 선택하세요: ";    
+    string selectStore;
+    cin >> selectStore;
+    if (selectStore == "A"){
+        newOrder->storeName = "교폰치킨";
+        printMenu(chikenStore,7);
+    }
+    else if (selectStore == "B"){
+        newOrder->storeName = "덥덥팦";
+    }
+    else if (selectStore == "C"){
+        newOrder->storeName = "어디야커피";
+    }
+    else if (selectStore == "D"){
+        newOrder->storeName = "치코파덕";
+    }
     cout << "메뉴를 선택하세요: ";
     cin >> newOrder->menu;
     cout << "계좌번호를 입력하세요: ";
@@ -95,6 +148,7 @@ void Order::printMenu(storeMenu* menuList,int count){
         cout << setw(20) << right << menuList[i].price << endl;
     }
 };
+
 /*
 void Order::printOrder(){
 
