@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include "Room.h"
+#include "Order.h"
 
 using namespace std;
 
@@ -32,7 +33,6 @@ string leaderSelection(){
 }
 /*
 string memberSelection(){
-
 }*/
 
 bool logIn(){
@@ -60,10 +60,12 @@ int main(){
     if(logIn()){
         cout << "\n로그인에 성공하셨습니다!" << endl;
         Room* a = new Room;
-        //Order* b;
+        Order* b = new Order;
+        string menu;
         while(1){
-            if (fristSelection() == "A"){
-                if(leaderSelection() == "A")a
+            menu = fristSelection();
+            if (menu == "A"){
+                if(leaderSelection() == "A")
                     a->createRoom();
                 else if (leaderSelection() == "B")
                     a->deleteRoom();
@@ -71,6 +73,10 @@ int main(){
                     a->updateRoom();
                 else if (leaderSelection() == "D")
                     a->printRoom();
+            }
+            else if (menu == "B"){
+                cout << "working fine.";
+                b->createOrder();
             }
         }
     }
