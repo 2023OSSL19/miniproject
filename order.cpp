@@ -139,14 +139,36 @@ void Order::updateOrder(){
 
 };
 */
-void Order::printMenu(storeMenu* menuList,int count){
+void Order::printMenu(){
+    
     cout << "\n메뉴" << setw(30) << "가격" << endl;
-    cout << "---------------------------------" << endl;
-
-    for(int i=0;i<count;i++){
-        cout << setw(15) << left << menuList[i].menuName;
-        cout << setw(20) << right << menuList[i].price << endl;
+    cout << "---------------교폰치킨---------------" << endl;
+    for(int i=0;i<7;i++){
+        cout << setw(15) << left << chikenStore[i].menuName;
+        cout << setw(20) << right << chikenStore[i].price << endl;
     }
+
+    cout << "\n메뉴" << setw(30) << "가격" << endl;
+    cout << "---------------덥덥팦---------------" << endl;
+    for(int i=0;i<7;i++){
+        cout << setw(15) << left << riceStore[i].menuName;
+        cout << setw(20) << right << riceStore[i].price << endl;
+    }
+
+    cout << "\n메뉴" << setw(30) << "가격" << endl;
+    cout << "---------------어디야커피---------------" << endl;
+    for(int i=0;i<7;i++){
+        cout << setw(15) << left << coffeeStore[i].menuName;
+        cout << setw(20) << right << coffeeStore[i].price << endl;
+    }
+
+    cout << "\n메뉴" << setw(30) << "가격" << endl;
+    cout << "---------------치코파덕---------------" << endl;
+    for(int i=0;i<7;i++){
+        cout << setw(15) << left << padackStore[i].menuName;
+        cout << setw(20) << right << padackStore[i].price << endl;
+    }
+
 };
 
 /*
