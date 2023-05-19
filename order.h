@@ -13,6 +13,11 @@ struct orderNode{
     orderNode* next;
 };
 
+struct storeMenu{
+    string menuName;
+    int price;
+};
+
 
 class Order{
     private :
@@ -26,7 +31,7 @@ class Order{
         void createOrder();
         //void deleteOrder();
         //void updateOrder();  
-        //void printMenu();
+        void printMenu(storeMenu* menuList,int count);
         //void printOrder(); 
         //void showOrder();  
         //bool isEmpty();   
