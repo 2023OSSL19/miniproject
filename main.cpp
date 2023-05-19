@@ -31,9 +31,18 @@ string leaderSelection(){
 
     return m;
 }
-/*
+
 string memberSelection(){
-}*/
+    string m;
+    cout << "\nA: 주문 추가하기" << endl;
+    cout << "B: 주문 수정하기" << endl;
+    cout << "C: 주문 삭제하기" << endl;
+    cout << "D: 메뉴판보기" << endl;
+    cout << "원하시는 기능을 선택하세요: ";
+    cin >> m;
+
+    return m;
+}
 
 bool logIn(){
     string inputId;
@@ -61,22 +70,26 @@ int main(){
         cout << "\n로그인에 성공하셨습니다!" << endl;
         Room* a = new Room;
         Order* b = new Order;
-        string menu;
+        string big_selection;
+        string leader;
+        string member;
         while(1){
-            menu = fristSelection();
-            if (menu == "A"){
-                if(leaderSelection() == "A")
+            big_selection = fristSelection();
+            if (big_selection == "A"){
+                leader = leaderSelection();
+                if(leader == "A")
                     a->createRoom();
-                else if (leaderSelection() == "B")
+                else if (leader == "B")
                     a->deleteRoom();
-                else if (leaderSelection() == "C")
+                else if (leader == "C")
                     a->updateRoom();
-                else if (leaderSelection() == "D")
+                else if (leader == "D")
                     a->printRoom();
             }
-            else if (menu == "B"){
-                cout << "working fine.";
-                b->createOrder();
+            else if (big_selection == "B"){
+                member = memberSelection();
+                if(member == "A")
+                    b->createOrder();
             }
         }
     }
