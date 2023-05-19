@@ -96,13 +96,11 @@ void Room::printRoom(){
 
 };
 
-/*
 bool Room::isEmpty(){
     return (head == NULL);
 };
 
 
-*/
 void Room::updateRoom(){
     printRoom(); // 전체 방 출력
     roomNode* current = head;
