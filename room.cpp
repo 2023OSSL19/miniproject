@@ -155,3 +155,6 @@ void Room::updateRoom(){
 
 
 };
+int Room::getStoreSeletion(){
+    return this->storeSeletion;
+}
