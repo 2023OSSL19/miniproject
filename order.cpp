@@ -1,12 +1,34 @@
 #include <iostream>
 #include <string>
+#include <fstream>
+#include <iomanip>
 #include "Order.h"
 
 using namespace std;
 
+#define Max 20
+
 Order::Order(){
     head = nullptr;
     count = 0;
+    ifstream inputFile("교폰치킨.txt");
+    storeMenu* chikenStore = new storeMenu[Max];
+
+    int count = 0;
+    string menuName;
+    int price;
+
+    while(count < Max && inputFile >> menuName >> price){
+        chikenStore[count].menuName = menuName;
+        chikenStore[count].price = price;
+        count++;
+    }
+    inputFile.close();
+    printMenu(chikenStore,count);
+
+    //storeMenu* riceStore[] = new storeMenu[Max];
+    //storeMenu* coffeeStore[] = new storeMenu[Max];
+    //storeMenu* padackStore[] = new storeMenu[Max];
 };
 
 Order::~Order(){
@@ -53,7 +75,7 @@ void Order::createOrder(){
         current->next = newOrder;
     }
     cout << "\n 주문이 추가되었습니다!" << endl;
-  //  printOrder();
+    //printOrder();
 };
 /*
 void Order::deleteOrder(){
@@ -63,11 +85,17 @@ void Order::deleteOrder(){
 void Order::updateOrder(){
 
 };
+*/
+void Order::printMenu(storeMenu* menuList,int count){
+    cout << "\n메뉴" << setw(30) << "가격" << endl;
+    cout << "---------------------------------" << endl;
 
-void Order::printMenu(){
-
+    for(int i=0;i<count;i++){
+        cout << setw(15) << left << menuList[i].menuName;
+        cout << setw(10) << right << menuList[i].price << endl;
+    }
 };
-
+/*
 void Order::printOrder(){
 
 };
