@@ -27,8 +27,29 @@ void Room::createRoom(){
    //새로운 노드에 입력할 데이터를 입력받는다 (출력 + 입력)
     cout << "주문자 이름을 입력하세요: ";
     cin >> newRoom->orderer;
-    cout << "가게 번호를 입력하세요: ";
-    cin >> newRoom->storeSelection;
+    while(1){
+        cout << "가게 번호를 입력하세요: ";
+        cin >> newRoom->storeSelection;
+        if(newRoom->storeSelection>=1 && newRoom->storeSelection<=4){
+            break;
+        }
+    }
+    switch (newRoom-> storeSelection){
+        case 1:
+            newRoom->storeName.assign("교폰치킨")
+            break;
+        case 2:
+            newRoom->storeName.assign("덮덮팦")
+            break;
+        case 3:
+            newRoom->storeName.assign("어디야커피")
+            break;
+        case 4:
+            newRoom->storeName.assign("치코파덕")
+            break;
+        default:
+            break;
+    }
     cout << "방장의 계좌번호를 입력하세요: ";
     cin >> newRoom->account;
     cout << "방장의 핸드폰 번호를 입력하세요: ";
