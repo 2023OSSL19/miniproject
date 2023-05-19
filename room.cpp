@@ -28,13 +28,13 @@ void Room::createRoom(){
     cout << "주문자 이름을 입력하세요: ";
     cin >> newRoom->orderer;
     while(1){
-        cout << "가게 번호를 입력하세요: ";
+        cout << "가게 번호를 입력하세요: "; 
         cin >> newRoom->storeSelection;
-        if(newRoom->storeSelection>=1 && newRoom->storeSelection<=4){
+        if(newRoom->storeSelection>=1 && newRoom->storeSelection<=4){ // 1~4 이하의 값을 입력받을 때 까지
             break;
         }
     }
-    switch (newRoom-> storeSelection){
+    switch (newRoom-> storeSelection){ // 해당 값을 넣음
         case 1:
             newRoom->storeName.assign("교폰치킨")
             break;
@@ -52,6 +52,8 @@ void Room::createRoom(){
     }
     cout << "방장의 계좌번호를 입력하세요: ";
     cin >> newRoom->account;
+    cout << "방장의 은행을 입력하세요: ";
+    cin >> newRoom -> bank;
     cout << "방장의 핸드폰 번호를 입력하세요: ";
     cin >> newRoom->phoneNum;
     cout << "주문을 배달 받을 장소의 주소를 입력하세요: ";
@@ -75,6 +77,7 @@ void Room::createRoom(){
         current->next = newRoom;
     }
     cout << "\n방이 생성되었습니다!" << endl;
+    this->count ++;
     printRoom();
 };
 
@@ -110,9 +113,9 @@ void Room::updateRoom(){
 */
 void Room::printRoom(){
   roomNode *cur = NULL;
-  cout<< endl<<"Orderer   Store   Account   Phonenumber    Place   Time"<<endl;
+  cout<< endl<<"Orderer   Store  Bank Account   Phonenumber    Place   Time"<<endl;
   for(cur =head; cur != NULL; cur = cur->next){ // 데이터의 끝까지 출력
-    cout << cur-> orderer << "   " << cur->storeName << "   " << cur ->account << "   " << cur-> phoneNum << "    " << cur ->place << "    \n" <<endl; // time 구현 못함
+    cout << cur-> orderer << "   " << cur->storeName << "   " <<cur->bank<<"   "<< cur ->account << "   " << cur-> phoneNum << "    " << cur ->place << "    "<< cur->t1.hour<<":"<<cur->t1.min<<"    \n" << endl; // time 구현 못함
   }
 
 };
