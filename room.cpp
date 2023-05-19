@@ -36,16 +36,16 @@ void Room::createRoom(){
     }
     switch (newRoom-> storeSelection){ // 해당 값을 넣음
         case 1:
-            newRoom->storeName.assign("교폰치킨")
+            newRoom->storeName.assign("교폰치킨");
             break;
         case 2:
-            newRoom->storeName.assign("덮덮팦")
+            newRoom->storeName.assign("덥덥팦");
             break;
         case 3:
-            newRoom->storeName.assign("어디야커피")
+            newRoom->storeName.assign("어디야커피");
             break;
         case 4:
-            newRoom->storeName.assign("치코파덕")
+            newRoom->storeName.assign("치코파덕");
             break;
         default:
             break;
@@ -58,8 +58,8 @@ void Room::createRoom(){
     cin >> newRoom->phoneNum;
     cout << "주문을 배달 받을 장소의 주소를 입력하세요: ";
     cin >> newRoom->place;
-    cout << "주문 마감 시간을 입력하세요 (x시 x분), x만 입력해주세요";
-    cin >> newRoom->t1.hour >> newRoom->t1.min;
+    //cout << "주문 마감 시간을 입력하세요 (x시 x분), x만 입력해주세요";
+    //cin >> newRoom->t1.hour >> newRoom->t1.min;
     
     //새로운 노드의 연결고리를 비워둔다.
     newRoom->next = nullptr;
@@ -106,16 +106,16 @@ void Room::deleteRoom(){
     this->count--;
 };
 void Room::printRoom(){
-  roomNode *cur = NULL;
+  roomNode *cur = nullptr;
   cout<< endl<<"Orderer   Store  Bank Account   Phonenumber    Place   Time"<<endl;
-  for(cur =head; cur != NULL; cur = cur->next){ // 데이터의 끝까지 출력
+  for(cur =head; cur != nullptr; cur = cur->next){ // 데이터의 끝까지 출력
     cout << cur-> orderer << "   " << cur->storeName << "   " <<cur->bank<<"   "<< cur ->account << "   " << cur-> phoneNum << "    " << cur ->place << "    "<< cur->t1.hour<<":"<<cur->t1.min<<"    \n" << endl; // time 구현 못함
   }
 
 };
 
 bool Room::isEmpty(){
-    return (head == NULL);
+    return (head == nullptr);
 };
 
 
@@ -143,8 +143,8 @@ void Room::updateRoom(){
         cin >> current->phoneNum;
         cout << "주문을 배달 받을 장소의 주소를 입력하세요: ";
         cin >> current->place;
-        out << "주문 마감 시간을 입력하세요 (x시 x분), x만 입력해주세요";
-        cin >> current -> t1.hour >> t1.min;
+        cout << "주문 마감 시간을 입력하세요 (x시 x분), x만 입력해주세요";
+        //cin >> current -> t1.hour >> t1.min;
         printRoom();
         cout << "업데이트가 완료 되었습니다." << endl;
     }
@@ -155,6 +155,7 @@ void Room::updateRoom(){
 
 
 };
+/*
 int Room::getStoreSeletion(){
     return this->storeSeletion;
-}
+}*/

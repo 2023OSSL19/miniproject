@@ -2,7 +2,7 @@
 #include <string>
 #include <fstream>
 #include <iomanip>
-#include "Order.h"
+#include "order.h"
 
 using namespace std;
 
@@ -92,7 +92,7 @@ void Order::printMenu(storeMenu* menuList,int count){
 
     for(int i=0;i<count;i++){
         cout << setw(15) << left << menuList[i].menuName;
-        cout << setw(10) << right << menuList[i].price << endl;
+        cout << setw(20) << right << menuList[i].price << endl;
     }
 };
 /*
