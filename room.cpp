@@ -58,8 +58,8 @@ void Room::createRoom(){
     cin >> newRoom->phoneNum;
     cout << "주문을 배달 받을 장소의 주소를 입력하세요: ";
     cin >> newRoom->place;
-    //cout << "주문 마감 시간을 입력하세요 (x시 x분), x만 입력해주세요";
-    //cin >> newRoom->t1.hour >> newRoom->t1.min;
+    cout << "주문 마감 시간을 입력하세요 (x시 x분), x만 입력해주세요";
+    cin >> newRoom->t1.hour >> newRoom->t1.min;
     
     //새로운 노드의 연결고리를 비워둔다.
     newRoom->next = nullptr;
