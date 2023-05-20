@@ -37,7 +37,8 @@ string memberSelection(){
     cout << "\nA: 주문 추가하기" << endl;
     cout << "B: 주문 수정하기" << endl;
     cout << "C: 주문 삭제하기" << endl;
-    cout << "D: 메뉴판보기" << endl;
+    cout << "D: 주문 출력하기" << endl;
+    cout << "E: 메뉴판 보기" << endl;
     cout << "원하시는 기능을 선택하세요: ";
     cin >> m;
 
@@ -91,7 +92,10 @@ int main(){
                 if(member == "A"){
                     b->createOrder();
                 }
-                else if (member == "D"){
+                else if(member == "D"){
+                    b->printOrder();
+                }
+                else if (member == "E"){
                     b->printMenu();
                 }
             }

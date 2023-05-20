@@ -2,7 +2,7 @@
 #include <string>
 
 using namespace std;
-
+//주문 정보를 저장하는 구조체
 struct orderNode{
     string storeName;
     string menu;
@@ -13,6 +13,7 @@ struct orderNode{
     orderNode* next;
 };
 
+//메뉴판 정보를 불러오기 위한 구조체
 struct storeMenu{
     string menuName;
     int price;
@@ -32,7 +33,7 @@ class Order{
         //void deleteOrder();
         //void updateOrder();  
         void printMenu();
-        //void printOrder(); 
+        void printOrder(); 
         //void showOrder();  
         //bool isEmpty();   
 };

@@ -79,6 +79,8 @@ Order::~Order(){
 };
 
 void Order::createOrder(){
+    int money = 0;
+    int menuNum;
     //동적할당을 통해 새로운 노드를 만든다.
     orderNode* newOrder = new orderNode();
    //새로운 노드에 입력할 데이터를 입력받는다 (출력 + 입력)
@@ -89,21 +91,70 @@ void Order::createOrder(){
     cout << "D: 치코파덕" << endl;
     cout << "주문을 진행할 가게를 선택하세요: ";    
     string selectStore;
+    string m;
     cin >> selectStore;
+
+    //교폰치킨 선택시
     if (selectStore == "A"){
         newOrder->storeName = "교폰치킨";
+        cout << "\n메뉴" << setw(30) << "가격" << endl;
+        cout << "---------------교폰치킨---------------" << endl;
+        for(int i=0;i<7;i++){
+            cout << i+1 << " ";
+            cout << setw(15) << left << chikenStore[i].menuName;
+            cout << setw(20) << right << chikenStore[i].price << endl;
+        }
+        cout << "메뉴를 번호로 선택하세요: ";
+        cin >> menuNum;
+        money += chikenStore[menuNum-1].price;
+        newOrder->price = money;
+        newOrder->menu = chikenStore[menuNum-1].menuName;
     }
+    //덥덥팦 선택시
     else if (selectStore == "B"){
         newOrder->storeName = "덥덥팦";
+        cout << "\n메뉴" << setw(30) << "가격" << endl;
+        cout << "---------------덥덥팦---------------" << endl;
+        for(int i=0;i<7;i++){
+            cout << i+1 << " ";
+            cout << setw(15) << left << riceStore[i].menuName;
+            cout << setw(20) << right << riceStore[i].price << endl;
+        }
+        cout << "메뉴를 번호로 선택하세요: ";
+        money += riceStore[menuNum-1].price;
+        newOrder->price = money;
+        newOrder->menu = riceStore[menuNum-1].menuName;
     }
+    //어디야커피 선택시
     else if (selectStore == "C"){
         newOrder->storeName = "어디야커피";
+        cout << "\n메뉴" << setw(30) << "가격" << endl;
+        cout << "---------------어디야커피---------------" << endl;
+        for(int i=0;i<7;i++){
+            cout << i+1 << " ";
+            cout << setw(15) << left << coffeeStore[i].menuName;
+            cout << setw(20) << right << coffeeStore[i].price << endl;
+        }
+        cout << "메뉴를 번호로 선택하세요: ";
+        money += coffeeStore[menuNum-1].price;
+        newOrder->price = money;
+        newOrder->menu = coffeeStore[menuNum-1].menuName;
     }
+    //치코파덕 선택시
     else if (selectStore == "D"){
         newOrder->storeName = "치코파덕";
+        cout << "\n메뉴" << setw(30) << "가격" << endl;
+        cout << "---------------치코파덕---------------" << endl;
+        for(int i=0;i<7;i++){
+            cout << i+1 << " ";
+            cout << setw(15) << left << padackStore[i].menuName;
+            cout << setw(20) << right << padackStore[i].price << endl;
+        }
+        cout << "메뉴를 번호로 선택하세요: ";
+        money += padackStore[menuNum-1].price;
+        newOrder->price = money;
+        newOrder->menu = padackStore[menuNum-1].menuName;
     }
-    cout << "메뉴를 선택하세요: ";
-    cin >> newOrder->menu;
     cout << "계좌번호를 입력하세요: ";
     cin >> newOrder->accout;
     cout << "핸드폰 번호를 입력하세요: ";
@@ -170,8 +221,11 @@ void Order::printMenu(){
 
 };
 
-/*
-void Order::printOrder(){
 
+void Order::printOrder(){
+    orderNode *cur = nullptr;
+    cout << endl << "Orderer   Store  Bank Account   Phonenumber    Place   Time" << endl;
+    for(cur =head; cur != nullptr; cur = cur->next){ // 데이터의 끝까지 출력
+        cout << cur->storeName << "   " << cur->menu << "   " <<cur->price<<"   "<< cur ->phoneNum << "   " << cur-> accout << endl; // time 구현 못함
+    }
 };
-*/
