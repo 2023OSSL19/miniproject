@@ -2,6 +2,7 @@
 //#include "menu.h"
 //#include "order.h"
 #include <string>
+#include <fstream>
 
 using namespace std;
 
@@ -44,4 +45,5 @@ class Room{
         //void showMenu(); // 메뉴 출력 기능
         bool isEmpty(); // 방 유무 확인
         int getStoreSeletion(); // 메뉴 번호 return
+        bool fileExists(string fileName); // 파일 존재 유무 확인
 };
