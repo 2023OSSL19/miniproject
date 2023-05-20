@@ -11,6 +11,6 @@ typedef struct {
     string memo; // 기타 사항
 }menu; // 메뉴 출력을 위한 struct
 
-void createMenu(Menu *m[], int *num);
-void showMenu(Menu *m[], int num);
-void updateMenu(Menu *m[], int num);
+void createMenu(menu *m[], int *num);
+void showMenu(menu *m[], int num);
+void updateMenu(menu *m[], int num);
