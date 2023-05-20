@@ -23,7 +23,8 @@ struct roomNode{
     string storeSelection; //어떤 음식점을 선택할 것인가? -> 4~5개 가게 만들어야 함 -> 입력 -> 메뉴 4개 만들어야 함
     //Order* order; // 주문을 담는 공간
     //int menuCount; // 메뉴 개수
-    roomNode* next; // 
+    roomNode* next; // 다음 방 주소를 담는다
+    roomNode* orderList; //그 방의 주문을 담는다.
 }; // 각 방에 담기는 정보
 
 
@@ -44,4 +45,5 @@ class Room{
         //void showMenu(); // 메뉴 출력 기능
         bool isEmpty(); // 방 유무 확인
         int getStoreSeletion(); // 메뉴 번호 return
+        roomNode* returnHead();
 };

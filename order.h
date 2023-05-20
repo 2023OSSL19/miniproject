@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "Room.h"
 
 using namespace std;
 //주문 정보를 저장하는 구조체
@@ -31,11 +32,11 @@ class Order{
         Order(); // constructor, 최대 방 개수 100개로 제한, 메뉴 개수 15개로 제한
         ~Order(); // destructor
         //void searchOrder(); 
-        void createOrder();
+        void createOrder(string storeName);
         //void deleteOrder();
         //void updateOrder();  
         void printMenu();
-        void printOrder(); 
+        void printOrder();
         //void showOrder();  
         //bool isEmpty();   
 };

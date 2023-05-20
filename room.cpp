@@ -153,3 +153,7 @@ void Room::updateRoom(){
 int Room::getStoreSeletion(){
     return this->storeSeletion;
 }*/
+
+roomNode* Room::returnHead(){
+    return head;
+}

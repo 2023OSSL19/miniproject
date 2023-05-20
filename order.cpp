@@ -3,6 +3,7 @@
 #include <fstream>
 #include <iomanip>
 #include "order.h"
+//#include "Room.h"
 
 using namespace std;
 
@@ -78,24 +79,16 @@ Order::~Order(){
     head = nullptr;
 };
 
-void Order::createOrder(){
+void Order::createOrder(string storeName){
+    cout << "\n주문 가능한 가게 목록" << endl;
     int money = 0;
     int menuNum;
     //동적할당을 통해 새로운 노드를 만든다.
     orderNode* newOrder = new orderNode();
-   //새로운 노드에 입력할 데이터를 입력받는다 (출력 + 입력)
-    cout << "\n주문 가능한 가게 목록" << endl;
-    cout << "A: 교폰치킨" << endl;
-    cout << "B: 덥덥팝" << endl;
-    cout << "C: 어디야커피" << endl;
-    cout << "D: 치코파덕" << endl;
-    cout << "주문을 진행할 가게를 선택하세요: ";    
-    string selectStore;
-    string m;
-    cin >> selectStore;
+    cout << "가게이름: " << storeName << endl; 
 
     //교폰치킨 선택시
-    if (selectStore == "A"){
+    if (storeName == "교폰치킨"){
         newOrder->storeName = "교폰치킨";
         cout << "\n메뉴" << setw(30) << "가격" << endl;
         cout << "---------------교폰치킨---------------" << endl;
@@ -111,7 +104,7 @@ void Order::createOrder(){
         newOrder->menu = chikenStore[menuNum-1].menuName;
     }
     //덥덥팦 선택시
-    else if (selectStore == "B"){
+    else if (storeName == "덥덥팦"){
         newOrder->storeName = "덥덥팦";
         cout << "\n메뉴" << setw(30) << "가격" << endl;
         cout << "---------------덥덥팦---------------" << endl;
@@ -126,7 +119,7 @@ void Order::createOrder(){
         newOrder->menu = riceStore[menuNum-1].menuName;
     }
     //어디야커피 선택시
-    else if (selectStore == "C"){
+    else if (storeName == "어디야커피"){
         newOrder->storeName = "어디야커피";
         cout << "\n메뉴" << setw(30) << "가격" << endl;
         cout << "---------------어디야커피---------------" << endl;
@@ -141,7 +134,7 @@ void Order::createOrder(){
         newOrder->menu = coffeeStore[menuNum-1].menuName;
     }
     //치코파덕 선택시
-    else if (selectStore == "D"){
+    else if (storeName == "치코파덕"){
         newOrder->storeName = "치코파덕";
         cout << "\n메뉴" << setw(30) << "가격" << endl;
         cout << "---------------치코파덕---------------" << endl;
@@ -155,6 +148,8 @@ void Order::createOrder(){
         newOrder->price = money;
         newOrder->menu = padackStore[menuNum-1].menuName;
     }
+
+
     cout << "계좌번호를 입력하세요: ";
     cin >> newOrder->accout;
     cout << "핸드폰 번호를 입력하세요: ";
@@ -228,3 +223,4 @@ void Order::printOrder(){
         cout << cur->storeName << "   " << cur->menu << "   " <<cur->price<<"   "<< cur ->phoneNum << "   " << cur-> accout << endl; // time 구현 못함
     }
 };
+
