@@ -2,6 +2,7 @@
 #define MAX 15
 #include <iostream>
 #include <string>
+#include <fstream>
 using namespace std;
 
 typedef struct {
@@ -11,6 +12,6 @@ typedef struct {
     string memo; // 기타 사항
 }menu; // 메뉴 출력을 위한 struct
 
-void createMenu(menu *m[], int *num);
+void createMenu();
 void showMenu(menu *m[], int num);
 void updateMenu(menu *m[], int num);

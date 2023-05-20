@@ -28,27 +28,11 @@ void Room::createRoom(){
     cout << "주문자 이름을 입력하세요: ";
     cin >> newRoom->orderer;
     while(1){
-        cout << "가게 번호를 입력하세요: "; 
-        cin >> newRoom->storeSelection;
-        if(newRoom->storeSelection>=1 && newRoom->storeSelection<=4){ // 1~4 이하의 값을 입력받을 때 까지
-            break;
-        }
-    }
-    switch (newRoom-> storeSelection){ // 해당 값을 넣음
-        case 1:
-            newRoom->storeName.assign("교폰치킨");
-            break;
-        case 2:
-            newRoom->storeName.assign("덥덥팦");
-            break;
-        case 3:
-            newRoom->storeName.assign("어디야커피");
-            break;
-        case 4:
-            newRoom->storeName.assign("치코파덕");
-            break;
-        default:
-            break;
+        cout << "가계 이름을 입력하세요: ";
+        cin >> newRoom -> storeName;
+        string fileName = newRoom->storeName+".txt";
+        if(fileExists(fileName)) break;
+        else cout<< "파일이 존재하지 않습니다" << endl;
     }
     cout << "방장의 계좌번호를 입력하세요: ";
     cin >> newRoom->account;
@@ -143,7 +127,7 @@ void Room::updateRoom(){
         cout << "주문을 배달 받을 장소의 주소를 입력하세요: ";
         cin >> current->place;
         cout << "주문 마감 시간을 입력하세요 (x시 x분), x만 입력해주세요";
-        //cin >> current -> t1.hour >> t1.min;
+        cin >> current -> t1.hour >> t1.min;
         printRoom();
         cout << "업데이트가 완료 되었습니다." << endl;
     }
@@ -154,7 +138,12 @@ void Room::updateRoom(){
 
 
 };
-/*
+
 int Room::getStoreSeletion(){
     return this->storeSeletion;
-}*/
+}
+bool fileExists(string fileName)
+{
+    ifstream file(fileName);
+    return file.good();
+}
