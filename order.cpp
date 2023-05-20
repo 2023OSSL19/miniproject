@@ -185,12 +185,12 @@ void Order::deleteOrder(){
 
 };
 
-void Order::updateOrder(){
+void Order::(){
 
 };
 */
+
 void Order::printMenu(){
-    
     cout << "\n메뉴" << setw(30) << "가격" << endl;
     cout << "---------------교폰치킨---------------" << endl;
     for(int i=0;i<7;i++){
@@ -220,7 +220,6 @@ void Order::printMenu(){
     }
 
 };
-
 
 void Order::printOrder(){
     orderNode *cur = nullptr;

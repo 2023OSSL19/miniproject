@@ -4,6 +4,8 @@
 using namespace std;
 //주문 정보를 저장하는 구조체
 struct orderNode{
+    string orderer;
+    string part;
     string storeName;
     string menu;
     int price;

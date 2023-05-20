@@ -27,29 +27,29 @@ void Room::createRoom(){
    //새로운 노드에 입력할 데이터를 입력받는다 (출력 + 입력)
     cout << "주문자 이름을 입력하세요: ";
     cin >> newRoom->orderer;
+    newRoom->status = "방장";
+    cout << "\n주문 가능한 가게 목록" << endl;
+    cout << "A: 교폰치킨" << endl;
+    cout << "B: 덥덥팝" << endl;
+    cout << "C: 어디야커피" << endl;
+    cout << "D: 치코파덕" << endl;
     while(1){
-        cout << "가게 번호를 입력하세요: "; 
+        cout << "주문을 진행할 가게를 선택하세요: "; 
         cin >> newRoom->storeSelection;
-        if(newRoom->storeSelection>=1 && newRoom->storeSelection<=4){ // 1~4 이하의 값을 입력받을 때 까지
+        if(newRoom->storeSelection>="A" && newRoom->storeSelection<="D"){ // 1~4 이하의 값을 입력받을 때 까지
             break;
         }
     }
-    switch (newRoom-> storeSelection){ // 해당 값을 넣음
-        case 1:
-            newRoom->storeName.assign("교폰치킨");
-            break;
-        case 2:
-            newRoom->storeName.assign("덥덥팦");
-            break;
-        case 3:
-            newRoom->storeName.assign("어디야커피");
-            break;
-        case 4:
-            newRoom->storeName.assign("치코파덕");
-            break;
-        default:
-            break;
+    if (newRoom->storeSelection == "A"){
+        newRoom->storeName = "교폰치킨";
+    } else if (newRoom->storeSelection == "B") {
+        newRoom->storeName = "덥덥팦";
+    } else if (newRoom->storeSelection == "C") {
+        newRoom->storeName = "어디야커피";
+    } else if (newRoom->storeSelection == "D") {
+        newRoom->storeName = "치코파덕";
     }
+
     cout << "방장의 계좌번호를 입력하세요: ";
     cin >> newRoom->account;
     cout << "방장의 은행을 입력하세요: ";
@@ -85,7 +85,7 @@ void Room::createRoom(){
 void Room::deleteRoom(){
     printRoom(); // 전체 방 출력
     string name; // 검색 받을 이름
-    cout<< "===> 삭제할 방을 입력하세요: ";
+    cout<< "===> 삭제할 방의 방장 이름을 입력하세요: ";
     cin >> name;
     roomNode * prev = nullptr;
     roomNode* current = head;
@@ -99,17 +99,16 @@ void Room::deleteRoom(){
         else
             prev ->next = current ->next;
         delete current;
-    }
-    else{
+    } else{
         cout<<"방을 찾을 수 없습니다."<<endl;
     }
     this->count--;
 };
 void Room::printRoom(){
     roomNode *cur = nullptr;
-    cout<< endl<<"Orderer   Store  Bank Account   Phonenumber    Place   Time"<<endl;
+    cout<< endl<<"Orderer   Status   Store  Bank Account   Phonenumber    Place   Time"<<endl;
     for(cur =head; cur != nullptr; cur = cur->next){ // 데이터의 끝까지 출력
-        cout << cur-> orderer << "   " << cur->storeName << "   " <<cur->bank<<"   "<< cur ->account << "   " << cur-> phoneNum << "    " << cur ->place << "    "<< cur->t1.hour<<":"<<cur->t1.min<<"    \n" << endl; // time 구현 못함
+        cout << cur-> orderer << "   " << cur->status << "  " << cur->storeName << "   " <<cur->bank<<"   "<< cur ->account << "   " << cur-> phoneNum << "    " << cur ->place << "    "<< cur->t1.hour<<":"<<cur->t1.min<<"    \n" << endl; // time 구현 못함
     }
 };
 
@@ -123,7 +122,7 @@ void Room::updateRoom(){
     roomNode* current = head;
     roomNode* prev = nullptr;
     string name; // 검색 받을 이름
-    cout<< "===> : 업데이트할 방을 입력하세요: ";
+    cout<< "===> : 업데이트할 방의 방장 이름을 입력하세요: ";
     cin >> name;
     while(current != nullptr && current -> orderer != name){ // 값을 찾을 때까지 OR 값이 없으면
         prev = current;
@@ -146,13 +145,9 @@ void Room::updateRoom(){
         //cin >> current -> t1.hour >> t1.min;
         printRoom();
         cout << "업데이트가 완료 되었습니다." << endl;
-    }
-
-    else{
+    } else{
         cout << "방을 찾을 수 없습니다." << endl;
     }
-
-
 };
 /*
 int Room::getStoreSeletion(){
