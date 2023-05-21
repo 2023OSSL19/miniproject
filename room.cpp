@@ -235,11 +235,7 @@ void Room::updateRoom(Store& store){
         cout << "방을 찾을 수 없습니다." << endl;
     }
 };
-/*
-string Room::getStoreSeletion(){
-    return this->StoreSeletion; 
-}
-*/
+
 roomNode* Room::returnHead(){
     return head;
 
