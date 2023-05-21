@@ -42,7 +42,7 @@ class Room{
         void createBaseRoom(); //시나리오를 위해 기본적으로 생성 된 방
         void createRoom(Store& store); // 방 생성, 방장에서만 사용
         void deleteRoom(); // 방 삭제, 방장에서만 사용
-        void updateRoom(); // 방 정보 업데이트, 방장에서만 사용
+        void updateRoom(Store& store); // 방 정보 업데이트, 방장에서만 사용
         void printRoom(); // 전체 방 정보 출력, 사용자에서 사용
         //void showMenu(); // 메뉴 출력 기능
         bool isEmpty(); // 방 유무 확인

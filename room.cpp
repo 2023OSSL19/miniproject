@@ -127,6 +127,10 @@ void Room::createRoom(Store& store){
 
 
 void Room::deleteRoom(){
+    if(!isEmpty()){
+        cout<< "방이 존재하지 않습니다."<<endl;
+        return;
+    }
     printRoom(); // 전체 방 출력
     string name; // 검색 받을 이름
     cout<< "===> 삭제할 방의 방장 이름을 입력하세요: ";
@@ -149,6 +153,10 @@ void Room::deleteRoom(){
     this->count--;
 };
 void Room::printRoom(){
+    if(!isEmpty()){
+        cout<< "방이 존재하지 않습니다."<<endl;
+        return;
+    }
     roomNode *cur = nullptr;
     cout<< endl<<"Orderer   Status   Store  Bank Account   Phonenumber    Place   Time"<<endl;
     for(cur =head; cur != nullptr; cur = cur->next){ // 데이터의 끝까지 출력
@@ -161,7 +169,11 @@ bool Room::isEmpty(){
 };
 
 
-void Room::updateRoom(){
+void Room::updateRoom(Store& store){
+    if(!isEmpty()){
+        cout<< "방이 존재하지 않습니다."<<endl;
+        return;
+    }
     printRoom(); // 전체 방 출력
     roomNode* current = head;
     roomNode* prev = nullptr;
@@ -175,8 +187,19 @@ void Room::updateRoom(){
     if (current!=nullptr){
         cout << "주문자 이름을 입력하세요: ";
         cin >> current->orderer;
-        cout << "가게 이름을 입력하세요: ";
-        cin >> current->storeName;
+        cout<< "가게 목록"<<endl;
+        store.showAllStore();
+        while(1){
+            cout << "가게 이름을 입력하세요: ";
+            cin >> current->storeName;
+            if(fileExists(current->storeName)){
+                break;
+            }
+            else{
+                cout<<"존재하지 않는 가게 입니다"<<endl;
+            }
+        }
+
         cout << "은행을 입력하세요: ";
         cin >> current -> bank;
         cout << "방장의 계좌번호를 입력하세요: ";
@@ -189,7 +212,8 @@ void Room::updateRoom(){
         cin >> current -> t1.hour >> current->t1.min;
         printRoom();
         cout << "업데이트가 완료 되었습니다." << endl;
-    } else{
+    } 
+    else{
         cout << "방을 찾을 수 없습니다." << endl;
     }
 };
