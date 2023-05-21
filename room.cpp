@@ -104,8 +104,8 @@ void Room::createRoom(Store& store){
     cin >> newRoom->place;
     while(1){
         cout << "주문 마감 시간을 입력하세요 (x시 x분), x만 입력해주세요";
-        cin >> current -> t1.hour >> current->t1.min;
-        if(current ->t1.hour>=0 && current ->t1.hour<24 &&current->min>=0&&current->min<60){
+        cin >> newRoom -> t1.hour >> newRoom->t1.min;
+        if(newRoom ->t1.hour>=0 && newRoom ->t1.hour<24 &&newRoom->t1.min>=0&&newRoom->t1.min<60){
             break;
         }
         else{
@@ -220,7 +220,7 @@ void Room::updateRoom(Store& store){
         while(1){
             cout << "주문 마감 시간을 입력하세요 (x시 x분), x만 입력해주세요";
             cin >> current -> t1.hour >> current->t1.min;
-            if(current ->t1.hour>=0 && current ->t1.hour<24 &&current->min>=0&&current->min<60){
+            if(current ->t1.hour>=0 && current ->t1.hour<24 && current->t1.min>=0&&current->t1.min<60){
                 break;
             }
             else{
