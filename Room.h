@@ -15,7 +15,7 @@ struct roomNode{
     string orderer; // 검색 삭제를 위한 변수 -> 입력 받기
     string status;
     string storeName; // 가게 이름 -> 입력 받기
-    int account; // 계좌 번호 -> 입력 받기
+    long int account; // 계좌 번호 -> 입력 받기
     string bank; // 은행
     //int totalPrice; // 총 가격 -> 계산 인데, 일단 입력
     int phoneNum; // 핸드폰 번호 -> 입력
@@ -39,6 +39,7 @@ class Room{
         Room(); // constructor, 최대 방 개수 100개로 제한, 메뉴 개수 15개로 제한
         ~Room(); // destructor
         //void searchRoom(); // 메뉴를 입력하면 방을 해당 방을 출력, 사용자에서 사용
+        void createBaseRoom(); //시나리오를 위해 기본적으로 생성 된 방
         void createRoom(); // 방 생성, 방장에서만 사용
         void deleteRoom(); // 방 삭제, 방장에서만 사용
         void updateRoom(); // 방 정보 업데이트, 방장에서만 사용
@@ -47,5 +48,5 @@ class Room{
         bool isEmpty(); // 방 유무 확인
         int getStoreSeletion(); // 메뉴 번호 return
         roomNode* returnHead();
-        bool fileExists(string fileName); // 파일 존재 유무 확인
+        //bool fileExists(string fileName); // 파일 존재 유무 확인
 };

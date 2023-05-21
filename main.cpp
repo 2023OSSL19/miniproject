@@ -67,10 +67,12 @@ bool logIn(){
 }
 
 int main(){
+    //시나리오를 위한 방 하나 제작
+    Room* a = new Room;
+    Order* b = new Order;
+    a->createBaseRoom();
     if(logIn()){
         cout << "\n로그인에 성공하셨습니다!" << endl;
-        Room* a = new Room;
-        Order* b = new Order;
         string big_selection;
         string leader;
         string member;
@@ -126,6 +128,7 @@ int main(){
         cout << "로그인에 실패하셨습니다." << endl;
     }
 
-
+    delete a;
+    delete b;
     return 0;
 }

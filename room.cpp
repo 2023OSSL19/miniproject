@@ -21,6 +21,35 @@ Room::~Room(){
     head = nullptr;
 };
 
+void Room::createBaseRoom(){
+    //동적할당을 통해 새로운 노드를 만든다.
+    roomNode* newRoom = new roomNode();
+    newRoom->orderer = "강한동";
+    newRoom->status = "방장";
+    newRoom->storeName = "교폰치킨";
+    newRoom->account = 123456789;
+    newRoom -> bank = "기업";
+    newRoom->phoneNum = 01011111111;
+    newRoom->place = "한동대 로뎀관";
+    newRoom->t1.hour = 12;
+    newRoom->t1.min = 10;
+    
+    //새로운 노드의 연결고리를 비워둔다.
+    newRoom->next = nullptr;
+    //만약 헤드뒤에 노드가 하나도 없다면 헤드 뒤로 새로 생성된 노드를 연결한다.
+    if (head == nullptr){
+        head = newRoom;
+    }
+    //그렇지 않다면 헤드부터 시작하여 하나씩 노드를 건너가며 꼬리가 빈 노드를 찾는다.
+    else {
+        roomNode* current = head;
+        while (current->next != nullptr){
+            current = current->next;
+        }
+        //꼬리가 빈 노드를 찾았다면 그 노드에 newNode를 연결시킨다
+        current->next = newRoom;
+    }
+}
 void Room::createRoom(){
     //동적할당을 통해 새로운 노드를 만든다.
     roomNode* newRoom = new roomNode();
