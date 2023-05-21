@@ -67,19 +67,21 @@ void Store::showAllStore(){ // 모든 가게 이름을 출력
 };
 
 void Store::showMenu(string storeName){ // 가게 이름을 받아서 해당 음식 메뉴 출력
+    if(!fileExists(storeName)){  // 해당 가게가 존재하지 않을 경우
+        cout << "해당 가게가 존재하지 않습니다."<<endl;
+        return;    
+    }
     string fileName = storeName + ".txt";
     ifstream file(fileName);
     
-    if(!fileExists(fileName)){
-        cout << "해당 가게가 존재하지 않습니다."<<endl;
-        return;
-    }
-
     if (file.is_open())
     {
+        int index =1;
+        cout << "- "<<storeName <<" -"<<endl;
         string line;
         while (getline(file, line)){
-            cout << line << endl;
+            cout << index<< ". "<< line << endl;
+            index++;
         }
         file.close();
     }
@@ -87,15 +89,20 @@ void Store::showMenu(string storeName){ // 가게 이름을 받아서 해당 음
     {
         cout << "파일을 열 수 없습니다." << endl;
     }
+            
+
+
+
 };
 
 void Store::updateMenu(string storeName){
-    string fileName = storeName+ ".txt";
-    ofstream file(fileName);
-    if(!fileExists(fileName)){
+    if(!fileExists(storeName)){
         cout << "해당 가게가 존재하지 않습니다."<<endl;
         return;
     }
+    string fileName = storeName+ ".txt";
+    ofstream file(fileName);
+
     if (file.is_open())
     {
         string newContent;
@@ -118,7 +125,10 @@ void Store::updateMenu(string storeName){
 };
 
 bool Store:: fileExists(string storeName){ // 해당 파일이 존재하는지, 즉 가게 이름이 존재하는지 확인
-    string fileName = storeName + ".txt";
-    ifstream file(fileName);
-    return file.good();
+    for(int i=0; i<count; i++){
+        if(store[i] == storeName){
+            return true;
+        }
+    }
+    return false;
 };

@@ -9,61 +9,9 @@ using namespace std;
 
 #define Max 20
 
-storeMenu* chikenStore = new storeMenu[Max];
-storeMenu* riceStore = new storeMenu[Max];
-storeMenu* coffeeStore = new storeMenu[Max];
-storeMenu* padackStore = new storeMenu[Max];
-
 Order::Order(){
     head = nullptr;
     count = 0;
-    //교폰치킨 정보 불러오기
-    ifstream chieken("교폰치킨.txt");
-
-    int index = 0;
-    string menuName;
-    int price;
-
-    while(index < Max && chieken >> menuName >> price){
-        chikenStore[index].menuName = menuName;
-        chikenStore[index].price = price;
-        index++;
-    }
-    chieken.close();
-    //덥덥팦 정보 불러오기
-    ifstream rice("덥덥팦.txt");
-    
-    index = 0;
-
-    while(index < Max && rice >> menuName >> price){
-        riceStore[index].menuName = menuName;
-        riceStore[index].price = price;
-        index++;
-    }
-    rice.close();
-    //어디야커피 정보 불러오기
-    ifstream coffee("어디야커피.txt");
-        
-    index = 0;
-
-    while(index < Max && coffee >> menuName >> price){
-        coffeeStore[index].menuName = menuName;
-        coffeeStore[index].price = price;
-        index++;
-    }
-    coffee.close();
-    //치코파턱정보 불러오기
-    ifstream padack("치코파덕.txt");
-    
-    index = 0;
-
-    while(index < Max && padack >> menuName >> price){
-        padackStore[index].menuName = menuName;
-        padackStore[index].price = price;
-        index++;
-    }
-    padack.close();
-    
 };
 
 Order::~Order(){
@@ -79,85 +27,38 @@ Order::~Order(){
     head = nullptr;
 };
 
-void Order::createOrder(string storeName,string leader){
-    int money = 0;
+void Order::createOrder(string storeName,string leader, Store& store){
     int menuNum;
+    int i=0; // menu 저장을 위한 변수
     //동적할당을 통해 새로운 노드를 만든다.자
     orderNode* newOrder = new orderNode();
     cout << leader << "님의 " << storeName << "방에 참가하셨습니다." << endl;
     cout << "주문을 진행해 주세요." << endl;
     newOrder->roomLeader = leader;
     newOrder->storeName = storeName;
-
-    //교폰치킨 선택시
-    if (storeName == "교폰치킨"){
-        newOrder->storeName = "교폰치킨";
-        cout << "\n메뉴" << setw(30) << "가격" << endl;
-        cout << "---------------교폰치킨---------------" << endl;
-        for(int i=0;i<7;i++){
-            cout << i+1 << " ";
-            cout << setw(15) << left << chikenStore[i].menuName;
-            cout << setw(20) << right << chikenStore[i].price << endl;
-        }
-        cout << "메뉴를 번호로 선택하세요: ";
+    cout << "이름을 입력해주세요: ";
+    cin >> newOrder-> orderer;
+    store.showMenu(newOrder->storeName); // 해당 가게의 메뉴 출력
+    storeMenu* storeInformation= setMenuInformation(storeName);
+    newOrder->menuCount=0;
+    newOrder->price =0;
+    while(1){
+        cout << "메뉴를 번호로 선택하세요(종료하려면 0 입력): ";
         cin >> menuNum;
-        money += chikenStore[menuNum-1].price;
-        newOrder->price = money;
-        newOrder->menu = chikenStore[menuNum-1].menuName;
-    }
-    //덥덥팦 선택시
-    else if (storeName == "덥덥팦"){
-        newOrder->storeName = "덥덥팦";
-        cout << "\n메뉴" << setw(30) << "가격" << endl;
-        cout << "---------------덥덥팦---------------" << endl;
-        for(int i=0;i<7;i++){
-            cout << i+1 << " ";
-            cout << setw(15) << left << riceStore[i].menuName;
-            cout << setw(20) << right << riceStore[i].price << endl;
+        if(menuNum==0 || i >=20){
+            break;
         }
-        cout << "메뉴를 번호로 선택하세요: ";
-        money += riceStore[menuNum-1].price;
-        newOrder->price = money;
-        newOrder->menu = riceStore[menuNum-1].menuName;
+        newOrder->price += storeInformation[menuNum-1].price;
+        newOrder -> menu[i] = storeInformation[menuNum-1].menuName;
+        newOrder->menuCount++;
+        i++;
     }
-    //어디야커피 선택시
-    else if (storeName == "어디야커피"){
-        newOrder->storeName = "어디야커피";
-        cout << "\n메뉴" << setw(30) << "가격" << endl;
-        cout << "---------------어디야커피---------------" << endl;
-        for(int i=0;i<7;i++){
-            cout << i+1 << " ";
-            cout << setw(15) << left << coffeeStore[i].menuName;
-            cout << setw(20) << right << coffeeStore[i].price << endl;
-        }
-        cout << "메뉴를 번호로 선택하세요: ";
-        money += coffeeStore[menuNum-1].price;
-        newOrder->price = money;
-        newOrder->menu = coffeeStore[menuNum-1].menuName;
-    }
-    //치코파덕 선택시
-    else if (storeName == "치코파덕"){
-        newOrder->storeName = "치코파덕";
-        cout << "\n메뉴" << setw(30) << "가격" << endl;
-        cout << "---------------치코파덕---------------" << endl;
-        for(int i=0;i<7;i++){
-            cout << i+1 << " ";
-            cout << setw(15) << left << padackStore[i].menuName;
-            cout << setw(20) << right << padackStore[i].price << endl;
-        }
-        cout << "메뉴를 번호로 선택하세요: ";
-        money += padackStore[menuNum-1].price;
-        newOrder->price = money;
-        newOrder->menu = padackStore[menuNum-1].menuName;
-    }
-
-
+    cout<< "은행을 입력하세요: ";
+    cin >> newOrder -> bank;
     cout << "계좌번호를 입력하세요: ";
     cin >> newOrder->accout;
     cout << "핸드폰 번호를 입력하세요: ";
     cin >> newOrder->phoneNum;
-    //newOrder->price 계산하는 함수 생성해야함
-    //paid는 어떻게 구별할 건지?
     
     //새로운 노드의 연결고리를 비워둔다.
     newOrder->next = nullptr;
@@ -174,50 +75,39 @@ void Order::createOrder(string storeName,string leader){
         //꼬리가 빈 노드를 찾았다면 그 노드에 newNode를 연결시킨다
         current->next = newOrder;
     }
+    count++;
     cout << "\n 주문이 추가되었습니다!" << endl;
     //printOrder();
 };
-/*
+
 void Order::deleteOrder(){
-
-};
-
-void Order::(){
-
-};
-*/
-
-void Order::printMenu(){
-    cout << "\n메뉴" << setw(30) << "가격" << endl;
-    cout << "---------------교폰치킨---------------" << endl;
-    for(int i=0;i<7;i++){
-        cout << setw(15) << left << chikenStore[i].menuName;
-        cout << setw(20) << right << chikenStore[i].price << endl;
+    printOrder();
+    string storeName; // 검색 받을 가게 이름
+    string name;
+    cout<< "===> 삭제할 주문의 이름을 입력하세요: ";
+    cin >> name;
+    cout<<"===> 삭제할 주문의 가게 이름을 입력하세요";
+    cin >> storeName;
+    orderNode* prev = nullptr;
+    orderNode* current = head;
+    while(current != nullptr && !(current -> orderer == name &&current -> storeName == storeName)){ // 값을 찾을 때까지 OR 값이 없으면
+        prev = current;
+        current = current ->next;
     }
-
-    cout << "\n메뉴" << setw(30) << "가격" << endl;
-    cout << "---------------덥덥팦---------------" << endl;
-    for(int i=0;i<7;i++){
-        cout << setw(15) << left << riceStore[i].menuName;
-        cout << setw(20) << right << riceStore[i].price << endl;
+    if (current != nullptr){
+        if(current == head)
+            head = current->next;
+        else
+            prev -> next = current ->next;
+        delete current;
     }
-
-    cout << "\n메뉴" << setw(30) << "가격" << endl;
-    cout << "---------------어디야커피---------------" << endl;
-    for(int i=0;i<7;i++){
-        cout << setw(15) << left << coffeeStore[i].menuName;
-        cout << setw(20) << right << coffeeStore[i].price << endl;
-    }
-
-    cout << "\n메뉴" << setw(30) << "가격" << endl;
-    cout << "---------------치코파덕---------------" << endl;
-    for(int i=0;i<7;i++){
-        cout << setw(15) << left << padackStore[i].menuName;
-        cout << setw(20) << right << padackStore[i].price << endl;
+    else{
+        cout<<"해당 주문이 존재하지 않습니다"<<endl;
     }
 
 };
 
+<<<<<<< HEAD
 void Order::printOrder() {
     orderNode *cur = head; // cur 포인터를 head로 초기화
 
@@ -236,3 +126,54 @@ void Order::printOrder() {
 //방정보보기 수정
 //방만들 때 내 order 추가하는 거 수정
 //order RUD 기능 추가
+=======
+
+void Order::printOrder(){
+    string name;
+    bool exist =false;
+    orderNode *prev = nullptr;
+    orderNode *cur = head;
+    cout<< "방장 이름을 입력해주세요: ";
+    cin >> name;
+    for(cur =head; cur != nullptr; cur = cur->next){ // 데이터의 끝까지 출력
+        if(cur -> roomLeader == name){
+            if(exist == false){
+                cout<< "roomLeader: "<< cur->roomLeader<<endl;
+                cout<< "store: "<< cur->storeName;
+                cout<< endl<<"Orderer     phoneNum   bank  account     price         menu"<<endl;
+            }
+            bool exist = true;
+            cout << cur-> orderer << "   " << cur->phoneNum << "  " <<cur->bank<<"    "<< cur-> accout<< "   " <<cur->price<<"   ";
+            for(int i=0; i<cur->menuCount; i++){
+                cout<< cur->menu[i];
+                if(!(i == cur->menuCount-1)){
+                    cout<< ", ";
+                }
+
+            }
+            cout<< endl;
+        }
+        else{
+            cout<< "해당 방장이 존재하지 않습니다."<<endl;
+        }
+    }
+
+};
+
+storeMenu* Order::setMenuInformation(string storeName){
+    storeMenu* storeInformation = new storeMenu[Max];
+    string fileName = storeName +".txt";
+    ifstream file(fileName);
+    int index =0;
+    string menuName;
+    int price;
+    while(index <20 && file >>menuName >>price){
+        storeInformation[index].menuName = menuName;
+        storeInformation[index].price = price;
+        index++;
+    }
+    file.close();
+    return storeInformation;
+
+}
+>>>>>>> f802c1aa0dfa70933f8643dfffe771c4b794f708
