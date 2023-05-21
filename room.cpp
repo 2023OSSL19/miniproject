@@ -177,7 +177,7 @@ void Room::printAllRoom(){
     roomNode *cur = nullptr;
     cout<< endl<<"Orderer   Store  Bank Account   Phonenumber    Place   Time"<<endl;
     for(cur =head; cur != nullptr; cur = cur->next){ // 데이터의 끝까지 출력
-        cout << cur-> orderer  << "  " << cur->storeName << "   " <<cur->bank<<"   "<< cur ->account << "   " << cur-> phoneNum << "    " << cur ->place << "    "<< cur->t1.hour<<":"<<cur->t1.min<<"    \n" << endl;
+        cout << cur-> orderer  << "  " << cur->storeName << "   " <<cur->bank<<"   "<< cur ->account << "   " << cur-> phoneNum << "    " << cur ->place << "    "<< cur->t1.hour<<":"<<cur->t1.min << endl;
     }
 };
 

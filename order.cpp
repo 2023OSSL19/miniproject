@@ -46,13 +46,14 @@ void Order::createOrder(string storeName,string leader, Store& store, string id)
     store.showMenu(newOrder->storeName); // 해당 가게의 메뉴 출력
     storeMenu* storeInformation= setMenuInformation(storeName, newOrder);
     newOrder->price =0;
+    newOrder ->menuCount =0;
     while(1){
         cout << "메뉴를 번호로 선택하세요(종료하려면 0 입력): ";
         cin >> menuNum;
         if(menuNum==0 || i >=20){
             break;
         }
-        if(menuNum>20|| newOrder->menuCount<menuNum){
+        if(menuNum>20|| newOrder->menuKind<menuNum){
             cout << "다시 입력해주세요."<<endl;
             continue;
         }
@@ -84,7 +85,7 @@ void Order::createOrder(string storeName,string leader, Store& store, string id)
         current->next = newOrder;
     }
     count++;
-    cout << "\n 주문이 추가되었습니다!" << endl;
+    cout << "\n주문이 추가되었습니다!" << endl;
 };
 
 void Order::deleteOrder(string id){
@@ -94,7 +95,7 @@ void Order::deleteOrder(string id){
     }
     printOrder(id);
     string storeName; // 검색 받을 가게 이름
-    cout<<"===> 삭제할 주문의 가게 이름을 입력하세요";
+    cout<<"===> 삭제할 주문의 가게 이름을 입력하세요: ";
     cin >> storeName;
     orderNode* prev = nullptr;
     orderNode* current = head;
@@ -159,7 +160,7 @@ storeMenu* Order::setMenuInformation(string storeName, orderNode *o){
         storeInformation[index].price = price;
         index++;
     }
-    o->menuCount = index;
+    o->menuKind = index;
     file.close();
     return storeInformation;
 
@@ -198,15 +199,15 @@ void Order::updateOrder(Store& store , string id){
         cin >> current-> orderer;
         store.showMenu(current->storeName); // 해당 가게의 메뉴 출력
         storeMenu* storeInformation= setMenuInformation(current->storeName, current);
-        current->menuCount=0;
         current->price =0;
+        current->menuCount =0;
         while(1){
             cout << "메뉴를 번호로 선택하세요(종료하려면 0 입력): ";
             cin >> menuNum;
             if(menuNum==0 || i >=20){
                 break;
             }
-            if(menuNum>20|| current->menuCount<menuNum){
+            if(menuNum>20|| current->menuKind<menuNum){
                 cout << "다시 입력해주세요."<<endl;
                 continue;
             }

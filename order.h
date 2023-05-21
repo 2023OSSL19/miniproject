@@ -9,6 +9,7 @@ struct orderNode{
     string id;
     string orderer;
     string storeName;
+    int menuKind; // 스토어의 메뉴 종류 개수
     string menu[20];
     int menuCount;
     int price;
