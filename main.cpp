@@ -117,8 +117,7 @@ int main(){
                 }
             }
             else if (big_selection == "C"){
-                cout << "내 주문 내역" << endl;
-                a->printRoom();
+                cout << "\n----------내 주문 내역----------" << endl;
                 b->printOrder();
             }
         }

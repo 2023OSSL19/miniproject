@@ -220,7 +220,10 @@ void Order::printMenu(){
 
 void Order::printOrder(){
     orderNode *cur = nullptr;
-    cout << endl << "Orderer   Store  Bank Account   Phonenumber    Place   Time" << endl;
+    cout << "참가한 방의 방장: " << cur->roomLeader << endl;
+    cout << "참가한 가게: " << cur->storeName;
+    cout << ""
+    cout << endl << "team   Store  Bank Account   Phonenumber    Place   Time" << endl;
     for(cur =head; cur != nullptr; cur = cur->next){ // 데이터의 끝까지 출력
         cout << cur->storeName << "   " << cur->menu << "   " <<cur->price<<"   "<< cur ->phoneNum << "   " << cur-> accout << endl; // time 구현 못함
     }
