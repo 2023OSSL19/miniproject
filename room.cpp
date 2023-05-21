@@ -127,7 +127,7 @@ void Room::createRoom(Store& store){
 
 
 void Room::deleteRoom(){
-    if(!isEmpty()){
+    if(isEmpty()){
         cout<< "방이 존재하지 않습니다."<<endl;
         return;
     }
@@ -153,7 +153,7 @@ void Room::deleteRoom(){
     this->count--;
 };
 void Room::printRoom(){
-    if(!isEmpty()){
+    if(isEmpty()){
         cout<< "방이 존재하지 않습니다."<<endl;
         return;
     }
@@ -170,7 +170,7 @@ bool Room::isEmpty(){
 
 
 void Room::updateRoom(Store& store){
-    if(!isEmpty()){
+    if(isEmpty()){
         cout<< "방이 존재하지 않습니다."<<endl;
         return;
     }
