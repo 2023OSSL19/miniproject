@@ -89,7 +89,7 @@ void Order::createOrder(string storeName,string leader, Store& store, string id)
 };
 
 void Order::deleteOrder(string id){
-    if(isEmpty()){
+    if(isEmpty(id)){
         cout <<"주문 목록이 없습니다!"<<endl;
         return;
     }
@@ -118,7 +118,7 @@ void Order::deleteOrder(string id){
 
 
 void Order::printOrder(string id){
-    if(isEmpty()){
+    if(isEmpty(id)){
         cout <<"주문 목록이 없습니다!"<<endl;
         return;
     }
@@ -177,7 +177,7 @@ bool Order::alreadyExistOrder(string id, string storeName){
     return false;
 }
 void Order::updateOrder(Store& store , string id){
-    if(isEmpty()){
+    if(isEmpty(id)){
         cout <<"주문 목록이 없습니다!"<<endl;
         return;
     }
@@ -229,7 +229,7 @@ void Order::updateOrder(Store& store , string id){
     }
 }
 void Order::printOrderForMaster(string name, string storeName){
-    if(isEmpty()){
+    if(isEmptyForMaster()){
         cout <<"주문 목록이 없습니다!"<<endl;
         return;
     }
@@ -258,7 +258,7 @@ void Order::printOrderForMaster(string name, string storeName){
     } 
 }
 void Order::printAllOrder(){
-    if(isEmpty()){
+    if(isEmptyForMaster()){
         cout <<"주문 목록이 없습니다!"<<endl;
         return;
     }
@@ -285,6 +285,20 @@ void Order::printAllOrder(){
     }
 
 };
-bool Order::isEmpty(){
-    return (head == nullptr);
+bool Order::isEmpty(string id){
+    if(head == nullptr){
+        return true;
+    }
+    orderNode * prev = nullptr;
+    orderNode* current = head;
+    for(current =head; current != nullptr; current = current->next){ // 데이터의 끝까지 출력
+        if(current -> id == id){
+            return false;
+        }
+    }
+    return true;
+    
+};
+bool Order::isEmptyForMaster(){
+    return (head==nullptr);
 }

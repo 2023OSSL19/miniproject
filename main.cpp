@@ -73,8 +73,10 @@ int main(){
                             else if (selection == "D")
                                 a->printRoom(id);
                             else if (selection == "E"){
-                                c->showAllStore();
-                                a->searchRoom(id);
+                                if(!(a->isEmpty(id))){
+                                    c->showAllStore();
+                                    a->searchRoom(id);
+                                }
                             }
 
                             else if (selection == "F"){

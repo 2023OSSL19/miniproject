@@ -7,8 +7,8 @@ class Controller{
     private :
         int count;
     public :
-        Controller();
-        bool logIn(string *user);
-        void join();
+        Controller(); // constructor
+        bool logIn(string *user); // login 함수
+        void join(); // 회원가입 함수
         
 };
