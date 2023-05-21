@@ -24,50 +24,55 @@ int main(){
         while(1){
             big_selection = fristSelection();
             if (big_selection == "A"){
-                leader = leaderSelection();
-                if(leader == "A")
-                    a->createRoom(*c);
-                else if (leader == "B")
-                    a->deleteRoom();
-                else if (leader == "C")
-                    a->updateRoom(*c);
-                else if (leader == "D")
-                    a->printRoom();
+                while(1){
+                    leader = leaderSelection();
+                    if(leader == "A")
+                        a->createRoom(*c);
+                    else if (leader == "B")
+                        a->deleteRoom();
+                    else if (leader == "C")
+                        a->updateRoom(*c);
+                    else if (leader == "D")
+                        a->printRoom();
+                }
             }
             else if (big_selection == "B"){
-                member = memberSelection();
-                if(member == "A"){
-                    c->showAllStore();
-                    a->searchRoom();
-                    string name; // 검색 받을 이름
-                    string storeName;
-                    cout<< "===> 참가하고 싶은 방의 방장 이름을 입력하세요: ";
-                    cin >> name;
-                    roomNode * prev = nullptr;
-                    roomNode* current = a->returnHead();
-                    while(current != nullptr && current -> orderer != name){ // 값을 찾을 때까지 OR 값이 없으면
-                        prev = current;
-                        current = current->next;
+                while(1){
+                    member = memberSelection();
+                    if(member == "A"){
+                        c->showAllStore();
+                        a->searchRoom();
+                        string name; // 검색 받을 이름
+                        string storeName;
+                        cout<< "===> 참가하고 싶은 방의 방장 이름을 입력하세요: ";
+                        cin >> name;
+                        roomNode * prev = nullptr;
+                        roomNode* current = a->returnHead();
+                        while(current != nullptr && current -> orderer != name){ // 값을 찾을 때까지 OR 값이 없으면
+                            prev = current;
+                            current = current->next;
+                        }
+                        if (current!=nullptr){ // 값을 찾았다면
+                            storeName = current->storeName;
+                        } else{
+                            cout<<"방을 찾을 수 없습니다."<<endl;
+                        }
+                        b->createOrder(storeName, name, *c);
                     }
-                    if (current!=nullptr){ // 값을 찾았다면
-                        storeName = current->storeName;
-                    } else{
-                        cout<<"방을 찾을 수 없습니다."<<endl;
+                    else if(member == "D"){
+                        a->printRoom();
+                        b->printOrder();
                     }
-                    b->createOrder(storeName, name, *c);
+                    else if (member == "E"){
+                        string name;
+                        c->showAllStore();
+                        cout << "가게 이름을 입력하세요: ";
+                        cin >> name;
+                        c->showMenu(name);
+    
+                    }
                 }
-                else if(member == "D"){
-                    a->printRoom();
-                    b->printOrder();
-                }
-                else if (member == "E"){
-                    string name;
-                    c->showAllStore();
-                    cout << "가게 이름을 입력하세요: ";
-                    cin >> name;
-                    c->showMenu(name);
- 
-                }
+
             }
             else if (big_selection == "C"){
                 a->printRoom();
@@ -89,8 +94,7 @@ string fristSelection(){
     string m;
     cout << "\nA: 방장 권한으로 참여하기" << endl;
     cout << "B: 팀원 권한으로 참여하기" << endl;
-    cout << "C: 내 주문보기" << endl;
-    cout << "원하시는 기능을 선택하세요: ";
+    cout << "원하시는 기능을 선택하세요(종료하려면 0): ";
     cin >> m;
     if (m == "0")
         exit(0);
@@ -102,10 +106,13 @@ string leaderSelection(){
     cout << "\nA: 방 만들기" << endl;
     cout << "B: 방정보 수정하기" << endl;
     cout << "C: 방 삭제하기" << endl;
-    cout << "D: 방정보 보기" << endl;
-    cout << "원하시는 기능을 선택하세요: ";
+    cout << "D: 방 정보 보기" << endl;
+    cout << "E: 방 주문 보기" << endl;
+    cout << "원하시는 기능을 선택하세요(종료하려면 0): ";
     cin >> m;
-
+    if(m == "0"){
+        exit(0);
+    }
     return m;
 }
 string memberSelection(){
@@ -115,8 +122,10 @@ string memberSelection(){
     cout << "C: 주문 삭제하기" << endl;
     cout << "D: 주문 출력하기" << endl;
     cout << "E: 메뉴판 보기" << endl;
-    cout << "원하시는 기능을 선택하세요: ";
+    cout << "원하시는 기능을 선택하세요(종료하려면 0): ";
     cin >> m;
+    if (m == "0")
+        exit(0);
 
     return m;
 }
