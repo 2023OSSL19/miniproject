@@ -29,7 +29,7 @@ Order::~Order(){
     head = nullptr;
 };
 
-void Order::createOrder(string storeName,string leader, Store& store){
+void Order::createOrder(string storeName,string leader, Store& store, ){
     int money = 0;
     int menuNum;
     int i=0; // menu 저장을 위한 변수
@@ -39,7 +39,6 @@ void Order::createOrder(string storeName,string leader, Store& store){
     cout << "주문을 진행해 주세요." << endl;
     newOrder->roomLeader = leader;
     newOrder->storeName = storeName;
-    cout<< storeName;
     cout << "이름을 입력해주세요: ";
     cin >> newOrder-> orderer;
     store.showMenu(newOrder->storeName); // 해당 가게의 메뉴 출력

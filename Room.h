@@ -24,7 +24,7 @@ struct roomNode{
     //Order* order; // 주문을 담는 공간
     //int menuCount; // 메뉴 개수
     roomNode* next; // 다음 방 주소를 담는다
-    roomNode* orderList; //그 방의 주문을 담는다.
+    //roomNode* orderList; //그 방의 주문을 담는다.
 }; // 각 방에 담기는 정보
 
 
@@ -46,5 +46,6 @@ class Room{
         //void showMenu(); // 메뉴 출력 기능
         bool isEmpty(); // 방 유무 확인
         roomNode* returnHead();
+        //roomNode* returnRoom();
         bool fileExists(string storeName); // 파일 존재 유무 확인
 };

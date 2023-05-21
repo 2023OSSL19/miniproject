@@ -240,7 +240,24 @@ roomNode* Room::returnHead(){
     return head;
 
 }
+/*
+roomNode* Room::returnRoom(){
+    searchRoom();
+    string name; // 검색 받을 이름
+    cout<< "===> 방의 방장 이름을 입력하세요: ";
+    cin >> name;
+    roomNode * prev = nullptr;
+    roomNode* current = head;
+    while(current != nullptr && current -> orderer != name){ // 값을 찾을 때까지 OR 값이 없으면
+        prev = current;
+        current = current ->next;
+    }
+    if (current!=nullptr){
+        return current-> orderList;
+    }
 
+}
+*/
 bool Room::fileExists(string storeName){
     string fileName = storeName + ".txt";
     ifstream file(fileName);
