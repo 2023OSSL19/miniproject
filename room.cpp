@@ -257,7 +257,7 @@ void Room::searchRoom(){
     cin >> name;
     roomNode * prev = nullptr;
     roomNode* current = head;
-    for(current =head; current != nullptr; current = cur->next){ // 데이터의 끝까지 출력
+    for(current =head; current != nullptr; current = current->next){ // 데이터의 끝까지 출력
         if(current -> storeName == name){
             if(exist == false){
                 cout<< endl<<"Orderer   Status   Store  Bank Account   Phonenumber    Place   Time"<<endl;

@@ -29,26 +29,31 @@ Order::~Order(){
     head = nullptr;
 };
 
-void Order::createOrder(string storeName,string leader, store& store){
+void Order::createOrder(string storeName,string leader, Store& store){
     int money = 0;
     int menuNum;
+    int i; // menu 저장을 위한 변수
     //동적할당을 통해 새로운 노드를 만든다.자
     orderNode* newOrder = new orderNode();
     cout << leader << "님의 " << storeName << "방에 참가하셨습니다." << endl;
     cout << "주문을 진행해 주세요." << endl;
     newOrder->roomLeader = leader;
     newOrder->storeName = storeName;
+    cout << "이름을 입력해주세요: ";
+    cin >> newOrder-> orderer;
     store.showMenu(storeName); // 해당 가게의 메뉴 출력
     storeMenu* storeInformation= setMenuInformation(storeName);
     while(1){
         cout << "메뉴를 번호로 선택하세요(종료하려면 0 입력): ";
         cin >> menuNum;
-        if(menuNum==0){
+        if(menuNum==0 || i >=20){
             break;
         }
         money += storeInformation[menuNum-1].price;
-        
+        newOrder -> menu[i] = storeInformation[menuNum].menuName;
     }
+
+    /*
     //교폰치킨 선택시
     if (storeName == "교폰치킨"){
         newOrder->storeName = "교폰치킨";
@@ -110,7 +115,7 @@ void Order::createOrder(string storeName,string leader, store& store){
         newOrder->price = money;
         newOrder->menu = padackStore[menuNum-1].menuName;
     }
-
+*/
 
     cout << "계좌번호를 입력하세요: ";
     cin >> newOrder->accout;

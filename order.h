@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "Store.h"
 
 using namespace std;
 //주문 정보를 저장하는 구조체
@@ -8,7 +9,7 @@ struct orderNode{
     string orderer;
     string part;
     string storeName;
-    string menu;
+    string menu[20];
     int price;
     string phoneNum;
     string accout;
@@ -32,10 +33,10 @@ class Order{
         Order(); // constructor, 최대 방 개수 100개로 제한, 메뉴 개수 15개로 제한
         ~Order(); // destructor
         //void searchOrder(); 
-        void createOrder(string storeName, string leader, store& store);
+        void createOrder(string storeName, string leader, Store& store);
         //void deleteOrder();
         //void updateOrder();  
-        void printMenu();
+        //void printMenu();
         void printOrder();
         //void showOrder();  
         //bool isEmpty();

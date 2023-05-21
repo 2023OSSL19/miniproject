@@ -53,13 +53,18 @@ int main(){
                     } else{
                         cout<<"방을 찾을 수 없습니다."<<endl;
                     }
-                    b->createOrder(storeName,name);
+                    b->createOrder(storeName, name, *c);
                 }
                 else if(member == "D"){
                     b->printOrder();
                 }
                 else if (member == "E"){
-                    b->printMenu();
+                    string name;
+                    c->showAllStore();
+                    cout << "가게 이름을 입력하세요: ";
+                    cin >> name;
+                    c->showMenu(name);
+ 
                 }
             }
             else if (big_selection == "C"){
