@@ -5,6 +5,7 @@
 using namespace std;
 //주문 정보를 저장하는 구조체
 struct orderNode{
+    string roomLeader;
     string orderer;
     string part;
     string storeName;
@@ -32,7 +33,7 @@ class Order{
         Order(); // constructor, 최대 방 개수 100개로 제한, 메뉴 개수 15개로 제한
         ~Order(); // destructor
         //void searchOrder(); 
-        void createOrder(string storeName);
+        void createOrder(string storeName, string leader);
         //void deleteOrder();
         //void updateOrder();  
         void printMenu();

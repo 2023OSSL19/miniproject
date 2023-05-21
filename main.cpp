@@ -11,7 +11,6 @@ string fristSelection(){
     cout << "\nA: 방장 권한으로 참여하기" << endl;
     cout << "B: 팀원 권한으로 참여하기" << endl;
     cout << "C: 내 주문보기" << endl;
-    cout << "0: 종료" << endl;
     cout << "원하시는 기능을 선택하세요: ";
     cin >> m;
     if (m == "0")
@@ -108,7 +107,7 @@ int main(){
                     } else{
                         cout<<"방을 찾을 수 없습니다."<<endl;
                     }
-                    b->createOrder(storeName);
+                    b->createOrder(storeName,name);
                 }
                 else if(member == "D"){
                     b->printOrder();

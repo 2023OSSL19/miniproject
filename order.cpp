@@ -79,13 +79,15 @@ Order::~Order(){
     head = nullptr;
 };
 
-void Order::createOrder(string storeName){
-    cout << "\n주문 가능한 가게 목록" << endl;
+void Order::createOrder(string storeName,string leader){
     int money = 0;
     int menuNum;
-    //동적할당을 통해 새로운 노드를 만든다.
+    //동적할당을 통해 새로운 노드를 만든다.자
     orderNode* newOrder = new orderNode();
-    cout << "가게이름: " << storeName << endl; 
+    cout << leader << "님의 " << storeName << "방에 참가하셨습니다." << endl;
+    cout << "주문을 진행해 주세요." << endl;
+    newOrder->roomLeader = leader;
+    newOrder->storeName = storeName;
 
     //교폰치킨 선택시
     if (storeName == "교폰치킨"){
