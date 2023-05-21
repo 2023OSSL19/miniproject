@@ -30,7 +30,7 @@ Order::~Order(){
 void Order::createOrder(string storeName,string leader, Store& store){
     int menuNum;
     int i=0; // menu 저장을 위한 변수
-    //동적할당을 통해 새로운 노드를 만든다.자
+    //동적할당을 통해 새로운 노드를 만든다.
     orderNode* newOrder = new orderNode();
     cout << leader << "님의 " << storeName << "방에 참가하셨습니다." << endl;
     cout << "주문을 진행해 주세요." << endl;
