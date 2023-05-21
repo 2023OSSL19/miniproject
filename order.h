@@ -12,7 +12,7 @@ struct orderNode{
     int price;
     string phoneNum;
     string accout;
-    //bool paid = false; //결제 여부 
+    //bool paid = false; //결제 여부
     orderNode* next;
 };
 
