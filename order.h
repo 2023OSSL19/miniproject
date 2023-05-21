@@ -10,9 +10,11 @@ struct orderNode{
     string part;
     string storeName;
     string menu[20];
+    int menuCount;
     int price;
     string phoneNum;
     string accout;
+    string bank;
     //bool paid = false; //결제 여부
     orderNode* next;
 };

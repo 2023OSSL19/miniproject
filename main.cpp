@@ -57,6 +57,7 @@ int main(){
                     b->createOrder(storeName, name, *c);
                 }
                 else if(member == "D"){
+                    a->printRoom();
                     b->printOrder();
                 }
                 else if (member == "E"){
@@ -69,8 +70,10 @@ int main(){
                 }
             }
             else if (big_selection == "C"){
-                cout << "\n----------내 주문 내역----------" << endl;
+                a->printRoom();
                 b->printOrder();
+                cout << "\n----------주문 내역----------" << endl;
+
             }
         }
     }

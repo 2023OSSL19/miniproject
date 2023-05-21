@@ -29,8 +29,7 @@ Order::~Order(){
     head = nullptr;
 };
 
-void Order::createOrder(string storeName,string leader, Store& store, ){
-    int money = 0;
+void Order::createOrder(string storeName,string leader, Store& store){
     int menuNum;
     int i=0; // menu 저장을 위한 변수
     //동적할당을 통해 새로운 노드를 만든다.자
@@ -43,14 +42,18 @@ void Order::createOrder(string storeName,string leader, Store& store, ){
     cin >> newOrder-> orderer;
     store.showMenu(newOrder->storeName); // 해당 가게의 메뉴 출력
     storeMenu* storeInformation= setMenuInformation(storeName);
+    newOrder->menuCount=0;
+    newOrder->price =0;
     while(1){
         cout << "메뉴를 번호로 선택하세요(종료하려면 0 입력): ";
         cin >> menuNum;
         if(menuNum==0 || i >=20){
             break;
         }
-        money += storeInformation[menuNum-1].price;
-        newOrder -> menu[i] = storeInformation[menuNum].menuName;
+        newOrder->price +=   storeInformation[menuNum-1].price;
+        newOrder -> menu[i] = storeInformation[menuNum-1].menuName;
+        newOrder->menuCount++;
+        i++;
     }
 
     /*
@@ -116,7 +119,8 @@ void Order::createOrder(string storeName,string leader, Store& store, ){
         newOrder->menu = padackStore[menuNum-1].menuName;
     }
 */
-
+    cout<< "은행을 입력하세요: ";
+    cin >> newOrder -> bank;
     cout << "계좌번호를 입력하세요: ";
     cin >> newOrder->accout;
     cout << "핸드폰 번호를 입력하세요: ";
@@ -184,7 +188,35 @@ void Order::printMenu(){
 };
 */
 void Order::printOrder(){
-    orderNode *cur = nullptr;
+    string name;
+    bool exist =false;
+    orderNode *prev = nullptr;
+    orderNode *cur = head;
+    cout<< "방장 이름을 입력해주세요: ";
+    cin >> name;
+    for(cur =head; cur != nullptr; cur = cur->next){ // 데이터의 끝까지 출력
+        if(cur -> roomLeader == name){
+            if(exist == false){
+                cout<< "roomLeader: "<< cur->roomLeader<<endl;
+                cout<< "store: "<< cur->storeName;
+                cout<< endl<<"Orderer     phoneNum   bank  account     price         menu"<<endl;
+            }
+            bool exist = true;
+            cout << cur-> orderer << "   " << cur->phoneNum << "  " <<cur->bank<<"    "<< cur-> accout<< "   " <<cur->price<<"   ";
+            for(int i=0; i<cur->menuCount; i++){
+                cout<< cur->menu[i];
+                if(!(i == cur->menuCount-1)){
+                    cout<< ", ";
+                }
+
+            }
+            cout<< endl;
+        }
+        else{
+            cout<< "해당 방장이 존재하지 않습니다."<<endl;
+        }
+    }
+    /*
     cout << "참가한 방의 방장: " << cur->roomLeader << endl;
     cout << "참가한 가게: " << cur->storeName;
     cout << "";
@@ -192,6 +224,7 @@ void Order::printOrder(){
     for(cur =head; cur != nullptr; cur = cur->next){ // 데이터의 끝까지 출력
         cout << cur->storeName << "   " << cur->menu << "   " <<cur->price<<"   "<< cur ->phoneNum << "   " << cur-> accout << endl; // time 구현 못함
     }
+    */
 };
 
 storeMenu* Order::setMenuInformation(string storeName){
