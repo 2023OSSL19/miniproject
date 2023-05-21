@@ -36,7 +36,7 @@ class Order{
         ~Order(); // destructor
         //void searchOrder(); 
         void createOrder(string storeName, string leader, Store& store);
-        //void deleteOrder();
+        void deleteOrder();
         //void updateOrder();  
         //void printMenu();
         void printOrder();

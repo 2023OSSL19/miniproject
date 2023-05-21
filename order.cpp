@@ -59,8 +59,6 @@ void Order::createOrder(string storeName,string leader, Store& store){
     cin >> newOrder->accout;
     cout << "핸드폰 번호를 입력하세요: ";
     cin >> newOrder->phoneNum;
-    //newOrder->price 계산하는 함수 생성해야함
-    //paid는 어떻게 구별할 건지?
     
     //새로운 노드의 연결고리를 비워둔다.
     newOrder->next = nullptr;
@@ -77,6 +75,7 @@ void Order::createOrder(string storeName,string leader, Store& store){
         //꼬리가 빈 노드를 찾았다면 그 노드에 newNode를 연결시킨다
         current->next = newOrder;
     }
+    count++;
     cout << "\n 주문이 추가되었습니다!" << endl;
     //printOrder();
 };
@@ -87,13 +86,27 @@ void Order::deleteOrder(){
     string name;
     cout<< "===> 삭제할 주문의 이름을 입력하세요: ";
     cin >> name;
+    cout<<"===> 삭제할 주문의 가게 이름을 입력하세요";
+    cin >> storeName;
+    orderNode* prev = nullptr;
+    orderNode* current = head;
+    while(current != nullptr && !(current -> orderer == name &&current -> storeName == storeName)){ // 값을 찾을 때까지 OR 값이 없으면
+        prev = current;
+        current = current ->next;
+    }
+    if (current != nullptr){
+        if(current == head)
+            head = current->next;
+        else
+            prev -> next = current ->next;
+        delete current;
+    }
+    else{
+        cout<<"해당 주문이 존재하지 않습니다"<<endl;
+    }
 
 };
-/*
-void Order::(){
 
-};
-*/
 
 void Order::printOrder(){
     string name;

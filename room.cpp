@@ -156,10 +156,11 @@ void Room::deleteRoom(){
         else
             prev ->next = current ->next;
         delete current;
+        this->count--;
     } else{
         cout<<"방을 찾을 수 없습니다."<<endl;
     }
-    this->count--;
+
 };
 void Room::printRoom(){
     if(isEmpty()){
