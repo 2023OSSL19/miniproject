@@ -46,9 +46,6 @@ class Room{
         //void showMenu(); // 메뉴 출력 기능
         bool isEmpty(); // 방 유무 확인
         int getStoreSeletion(); // 메뉴 번호 return
-<<<<<<< HEAD
         roomNode* returnHead();
-=======
         bool fileExists(string fileName); // 파일 존재 유무 확인
->>>>>>> bad438ced5d1bf7ad051450388a8608de0850546
 };
