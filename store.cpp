@@ -1,6 +1,6 @@
 #include "Store.h"
 
-Store::Store(){
+Store::Store(){ // 일단 생성되어 있는 가게들을 처리하기 위해 초기값을 세팅
     count =4;
     store[0] = "교폰치킨";
     store[1] = "덥덥팦";
@@ -14,7 +14,7 @@ Store::~Store(){
 
 void Store ::createMenu(){
     if (count >MAX){
-        cout << "저장할 수 있는 가게 개수를 초과했습니다.(최대 15개)";
+        cout << "저장할 수 있는 가게 개수를 초과했습니다.(최대 15개)"; // 최대로 저장할 수 있는 가게 수는 15개
         return;
     }
     string storeName;
@@ -39,7 +39,7 @@ void Store ::createMenu(){
             cout << "가격: ";
             cin >> price;
             file << price<<endl;
-            cout<< "입력을 종료하려면 0을 입력하세요. 계속하려면 아무키나 눌러주세요";
+            cout<< "입력을 종료하려면 0을 입력하세요. 계속하려면 아무키나 눌러주세요"; // 0이 입력될 때까지 메뉴를 입력받을 수 있도록 설정
             cin >>con;
             if(con=='0'){
                 break;
@@ -60,13 +60,13 @@ void Store ::createMenu(){
     } 
 };
 
-void Store::showAllStore(){
+void Store::showAllStore(){ // 모든 가게 이름을 출력 
     for(int i =0; i< count ; i++){
         cout << i+1<<". "<< store[i]<< endl;
     }
 };
 
-void Store::showMenu(string storeName){ // 메뉴 번호를 받아서 해당 음식 메뉴 출력
+void Store::showMenu(string storeName){ // 가게 이름을 받아서 해당 음식 메뉴 출력
     string fileName = storeName + ".txt";
     ifstream file(fileName);
     
@@ -109,7 +109,7 @@ void Store::updateMenu(string storeName){
             file << newContent << endl;
         }
         file.close();
-        cout << "파일이 덮어쓰기 되었습니다." << endl;
+        cout << "파일이 업데이트 되었습니다." << endl;
     }
     else
     {
@@ -117,7 +117,7 @@ void Store::updateMenu(string storeName){
     }
 };
 
-bool Store:: fileExists(string storeName){
+bool Store:: fileExists(string storeName){ // 해당 파일이 존재하는지, 즉 가게 이름이 존재하는지 확인
     string fileName = storeName + ".txt";
     ifstream file(fileName);
     return file.good();
