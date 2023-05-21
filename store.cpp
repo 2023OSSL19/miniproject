@@ -70,16 +70,19 @@ void Store::showMenu(string storeName){ // 가게 이름을 받아서 해당 음
     string fileName = storeName + ".txt";
     ifstream file(fileName);
     
-    if(!fileExists(fileName)){
+    if(!fileExists(fileName)){ // 해당 가게가 존재하지 않을 경우
         cout << "해당 가게가 존재하지 않습니다."<<endl;
         return;
     }
 
     if (file.is_open())
     {
+        int index =1;
+        cout << "- "<<storeName <<" -"<<endl;
         string line;
         while (getline(file, line)){
-            cout << line << endl;
+            cout << index<< ". "<< line << endl;
+            index++;
         }
         file.close();
     }

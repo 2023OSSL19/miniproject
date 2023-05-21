@@ -32,11 +32,12 @@ class Order{
         Order(); // constructor, 최대 방 개수 100개로 제한, 메뉴 개수 15개로 제한
         ~Order(); // destructor
         //void searchOrder(); 
-        void createOrder(string storeName, string leader);
+        void createOrder(string storeName, string leader, store& store);
         //void deleteOrder();
         //void updateOrder();  
         void printMenu();
         void printOrder();
         //void showOrder();  
-        //bool isEmpty();   
+        //bool isEmpty();
+        storeMenu* setMenuInformation(string storeName);   
 };

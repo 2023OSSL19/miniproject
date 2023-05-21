@@ -9,61 +9,11 @@ using namespace std;
 
 #define Max 20
 
-storeMenu* chikenStore = new storeMenu[Max];
-storeMenu* riceStore = new storeMenu[Max];
-storeMenu* coffeeStore = new storeMenu[Max];
-storeMenu* padackStore = new storeMenu[Max];
+
 
 Order::Order(){
     head = nullptr;
     count = 0;
-    //교폰치킨 정보 불러오기
-    ifstream chieken("교폰치킨.txt");
-
-    int index = 0;
-    string menuName;
-    int price;
-
-    while(index < Max && chieken >> menuName >> price){
-        chikenStore[index].menuName = menuName;
-        chikenStore[index].price = price;
-        index++;
-    }
-    chieken.close();
-    //덥덥팦 정보 불러오기
-    ifstream rice("덥덥팦.txt");
-    
-    index = 0;
-
-    while(index < Max && rice >> menuName >> price){
-        riceStore[index].menuName = menuName;
-        riceStore[index].price = price;
-        index++;
-    }
-    rice.close();
-    //어디야커피 정보 불러오기
-    ifstream coffee("어디야커피.txt");
-        
-    index = 0;
-
-    while(index < Max && coffee >> menuName >> price){
-        coffeeStore[index].menuName = menuName;
-        coffeeStore[index].price = price;
-        index++;
-    }
-    coffee.close();
-    //치코파턱정보 불러오기
-    ifstream padack("치코파덕.txt");
-    
-    index = 0;
-
-    while(index < Max && padack >> menuName >> price){
-        padackStore[index].menuName = menuName;
-        padackStore[index].price = price;
-        index++;
-    }
-    padack.close();
-    
 };
 
 Order::~Order(){
@@ -79,7 +29,7 @@ Order::~Order(){
     head = nullptr;
 };
 
-void Order::createOrder(string storeName,string leader){
+void Order::createOrder(string storeName,string leader, store& store){
     int money = 0;
     int menuNum;
     //동적할당을 통해 새로운 노드를 만든다.자
@@ -88,7 +38,17 @@ void Order::createOrder(string storeName,string leader){
     cout << "주문을 진행해 주세요." << endl;
     newOrder->roomLeader = leader;
     newOrder->storeName = storeName;
-
+    store.showMenu(storeName); // 해당 가게의 메뉴 출력
+    storeMenu* storeInformation= setMenuInformation(storeName);
+    while(1){
+        cout << "메뉴를 번호로 선택하세요(종료하려면 0 입력): ";
+        cin >> menuNum;
+        if(menuNum==0){
+            break;
+        }
+        money += storeInformation[menuNum-1].price;
+        
+    }
     //교폰치킨 선택시
     if (storeName == "교폰치킨"){
         newOrder->storeName = "교폰치킨";
@@ -186,7 +146,7 @@ void Order::(){
 
 };
 */
-
+/*
 void Order::printMenu(){
     cout << "\n메뉴" << setw(30) << "가격" << endl;
     cout << "---------------교폰치킨---------------" << endl;
@@ -217,7 +177,7 @@ void Order::printMenu(){
     }
 
 };
-
+*/
 void Order::printOrder(){
     orderNode *cur = nullptr;
     cout << "참가한 방의 방장: " << cur->roomLeader << endl;
@@ -229,3 +189,70 @@ void Order::printOrder(){
     }
 };
 
+storeMenu* Order::setMenuInformation(string storeName){
+    storeMenu* storeInformation = new storeMenu[Max];
+    string fileName = storeName +".txt";
+    ifstream file(fileName);
+    int index =0;
+    string menuName;
+    int price;
+    while(index <20 && file >>menuName >>price){
+        storeInformation[index].menuName = menuName;
+        storeInformation[index].price = price;
+        index++;
+    }
+    file.close();
+    return storeInformation;
+
+}
+
+
+
+/*
+    //교폰치킨 정보 불러오기
+    ifstream chieken("교폰치킨.txt");
+
+    int index = 0;
+    string menuName;
+    int price;
+
+    while(index < Max && chieken >> menuName >> price){
+        chikenStore[index].menuName = menuName;
+        chikenStore[index].price = price;
+        index++;
+    }
+    chieken.close();
+    //덥덥팦 정보 불러오기
+    ifstream rice("덥덥팦.txt");
+    
+    index = 0;
+
+    while(index < Max && rice >> menuName >> price){
+        riceStore[index].menuName = menuName;
+        riceStore[index].price = price;
+        index++;
+    }
+    rice.close();
+    //어디야커피 정보 불러오기
+    ifstream coffee("어디야커피.txt");
+        
+    index = 0;
+
+    while(index < Max && coffee >> menuName >> price){
+        coffeeStore[index].menuName = menuName;
+        coffeeStore[index].price = price;
+        index++;
+    }
+    coffee.close();
+    //치코파턱정보 불러오기
+    ifstream padack("치코파덕.txt");
+    
+    index = 0;
+
+    while(index < Max && padack >> menuName >> price){
+        padackStore[index].menuName = menuName;
+        padackStore[index].price = price;
+        index++;
+    }
+    padack.close();
+    */
