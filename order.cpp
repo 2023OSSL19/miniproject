@@ -9,8 +9,6 @@ using namespace std;
 
 #define Max 20
 
-
-
 Order::Order(){
     head = nullptr;
     count = 0;
@@ -50,75 +48,11 @@ void Order::createOrder(string storeName,string leader, Store& store){
         if(menuNum==0 || i >=20){
             break;
         }
-        newOrder->price +=   storeInformation[menuNum-1].price;
+        newOrder->price += storeInformation[menuNum-1].price;
         newOrder -> menu[i] = storeInformation[menuNum-1].menuName;
         newOrder->menuCount++;
         i++;
     }
-
-    /*
-    //교폰치킨 선택시
-    if (storeName == "교폰치킨"){
-        newOrder->storeName = "교폰치킨";
-        cout << "\n메뉴" << setw(30) << "가격" << endl;
-        cout << "---------------교폰치킨---------------" << endl;
-        for(int i=0;i<7;i++){
-            cout << i+1 << " ";
-            cout << setw(15) << left << chikenStore[i].menuName;
-            cout << setw(20) << right << chikenStore[i].price << endl;
-        }
-        cout << "메뉴를 번호로 선택하세요: ";
-        cin >> menuNum;
-        money += chikenStore[menuNum-1].price;
-        newOrder->price = money;
-        newOrder->menu = chikenStore[menuNum-1].menuName;
-    }
-    //덥덥팦 선택시
-    else if (storeName == "덥덥팦"){
-        newOrder->storeName = "덥덥팦";
-        cout << "\n메뉴" << setw(30) << "가격" << endl;
-        cout << "---------------덥덥팦---------------" << endl;
-        for(int i=0;i<7;i++){
-            cout << i+1 << " ";
-            cout << setw(15) << left << riceStore[i].menuName;
-            cout << setw(20) << right << riceStore[i].price << endl;
-        }
-        cout << "메뉴를 번호로 선택하세요: ";
-        money += riceStore[menuNum-1].price;
-        newOrder->price = money;
-        newOrder->menu = riceStore[menuNum-1].menuName;
-    }
-    //어디야커피 선택시
-    else if (storeName == "어디야커피"){
-        newOrder->storeName = "어디야커피";
-        cout << "\n메뉴" << setw(30) << "가격" << endl;
-        cout << "---------------어디야커피---------------" << endl;
-        for(int i=0;i<7;i++){
-            cout << i+1 << " ";
-            cout << setw(15) << left << coffeeStore[i].menuName;
-            cout << setw(20) << right << coffeeStore[i].price << endl;
-        }
-        cout << "메뉴를 번호로 선택하세요: ";
-        money += coffeeStore[menuNum-1].price;
-        newOrder->price = money;
-        newOrder->menu = coffeeStore[menuNum-1].menuName;
-    }
-    //치코파덕 선택시
-    else if (storeName == "치코파덕"){
-        newOrder->storeName = "치코파덕";
-        cout << "\n메뉴" << setw(30) << "가격" << endl;
-        cout << "---------------치코파덕---------------" << endl;
-        for(int i=0;i<7;i++){
-            cout << i+1 << " ";
-            cout << setw(15) << left << padackStore[i].menuName;
-            cout << setw(20) << right << padackStore[i].price << endl;
-        }
-        cout << "메뉴를 번호로 선택하세요: ";
-        money += padackStore[menuNum-1].price;
-        newOrder->price = money;
-        newOrder->menu = padackStore[menuNum-1].menuName;
-    }
-*/
     cout<< "은행을 입력하세요: ";
     cin >> newOrder -> bank;
     cout << "계좌번호를 입력하세요: ";
@@ -146,47 +80,21 @@ void Order::createOrder(string storeName,string leader, Store& store){
     cout << "\n 주문이 추가되었습니다!" << endl;
     //printOrder();
 };
-/*
+
 void Order::deleteOrder(){
+    printOrder();
+    string storeName; // 검색 받을 가게 이름
+    string name;
+    cout<< "===> 삭제할 주문의 이름을 입력하세요: ";
+    cin >> name;
 
 };
-
+/*
 void Order::(){
 
 };
 */
-/*
-void Order::printMenu(){
-    cout << "\n메뉴" << setw(30) << "가격" << endl;
-    cout << "---------------교폰치킨---------------" << endl;
-    for(int i=0;i<7;i++){
-        cout << setw(15) << left << chikenStore[i].menuName;
-        cout << setw(20) << right << chikenStore[i].price << endl;
-    }
 
-    cout << "\n메뉴" << setw(30) << "가격" << endl;
-    cout << "---------------덥덥팦---------------" << endl;
-    for(int i=0;i<7;i++){
-        cout << setw(15) << left << riceStore[i].menuName;
-        cout << setw(20) << right << riceStore[i].price << endl;
-    }
-
-    cout << "\n메뉴" << setw(30) << "가격" << endl;
-    cout << "---------------어디야커피---------------" << endl;
-    for(int i=0;i<7;i++){
-        cout << setw(15) << left << coffeeStore[i].menuName;
-        cout << setw(20) << right << coffeeStore[i].price << endl;
-    }
-
-    cout << "\n메뉴" << setw(30) << "가격" << endl;
-    cout << "---------------치코파덕---------------" << endl;
-    for(int i=0;i<7;i++){
-        cout << setw(15) << left << padackStore[i].menuName;
-        cout << setw(20) << right << padackStore[i].price << endl;
-    }
-
-};
-*/
 void Order::printOrder(){
     string name;
     bool exist =false;
@@ -216,15 +124,7 @@ void Order::printOrder(){
             cout<< "해당 방장이 존재하지 않습니다."<<endl;
         }
     }
-    /*
-    cout << "참가한 방의 방장: " << cur->roomLeader << endl;
-    cout << "참가한 가게: " << cur->storeName;
-    cout << "";
-    cout << endl << "team   Store  Bank Account   Phonenumber    Place   Time" << endl;
-    for(cur =head; cur != nullptr; cur = cur->next){ // 데이터의 끝까지 출력
-        cout << cur->storeName << "   " << cur->menu << "   " <<cur->price<<"   "<< cur ->phoneNum << "   " << cur-> accout << endl; // time 구현 못함
-    }
-    */
+
 };
 
 storeMenu* Order::setMenuInformation(string storeName){
@@ -243,54 +143,3 @@ storeMenu* Order::setMenuInformation(string storeName){
     return storeInformation;
 
 }
-
-
-
-/*
-    //교폰치킨 정보 불러오기
-    ifstream chieken("교폰치킨.txt");
-
-    int index = 0;
-    string menuName;
-    int price;
-
-    while(index < Max && chieken >> menuName >> price){
-        chikenStore[index].menuName = menuName;
-        chikenStore[index].price = price;
-        index++;
-    }
-    chieken.close();
-    //덥덥팦 정보 불러오기
-    ifstream rice("덥덥팦.txt");
-    
-    index = 0;
-
-    while(index < Max && rice >> menuName >> price){
-        riceStore[index].menuName = menuName;
-        riceStore[index].price = price;
-        index++;
-    }
-    rice.close();
-    //어디야커피 정보 불러오기
-    ifstream coffee("어디야커피.txt");
-        
-    index = 0;
-
-    while(index < Max && coffee >> menuName >> price){
-        coffeeStore[index].menuName = menuName;
-        coffeeStore[index].price = price;
-        index++;
-    }
-    coffee.close();
-    //치코파턱정보 불러오기
-    ifstream padack("치코파덕.txt");
-    
-    index = 0;
-
-    while(index < Max && padack >> menuName >> price){
-        padackStore[index].menuName = menuName;
-        padackStore[index].price = price;
-        index++;
-    }
-    padack.close();
-    */

@@ -24,7 +24,7 @@ Room::~Room(){
 void Room::createBaseRoom(){
     //동적할당을 통해 새로운 노드를 만든다.
     roomNode* newRoom = new roomNode();
-    newRoom->orderer = "강한동";
+    newRoom->orderer = "handong";
     newRoom->status = "방장";
     newRoom->storeName = "교폰치킨";
     newRoom->account = 123456789;
