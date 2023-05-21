@@ -38,7 +38,7 @@ class Room{
     public: 
         Room(); // constructor, 최대 방 개수 100개로 제한, 메뉴 개수 15개로 제한
         ~Room(); // destructor
-        //void searchRoom(); // 메뉴를 입력하면 방을 해당 방을 출력, 사용자에서 사용
+        void searchRoom(); // 메뉴를 입력하면 방을 해당 방을 출력, 사용자에서 사용
         void createBaseRoom(); //시나리오를 위해 기본적으로 생성 된 방
         void createRoom(Store& store); // 방 생성, 방장에서만 사용
         void deleteRoom(); // 방 삭제, 방장에서만 사용
@@ -46,7 +46,6 @@ class Room{
         void printRoom(); // 전체 방 정보 출력, 사용자에서 사용
         //void showMenu(); // 메뉴 출력 기능
         bool isEmpty(); // 방 유무 확인
-        //string getStoreSeletion(); // 메뉴 번호 return
         roomNode* returnHead();
         bool fileExists(string storeName); // 파일 존재 유무 확인
 };

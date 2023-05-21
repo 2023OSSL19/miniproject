@@ -235,11 +235,7 @@ void Room::updateRoom(Store& store){
         cout << "방을 찾을 수 없습니다." << endl;
     }
 };
-/*
-string Room::getStoreSeletion(){
-    return this->StoreSeletion; 
-}
-*/
+
 roomNode* Room::returnHead(){
     return head;
 
@@ -249,4 +245,25 @@ bool Room::fileExists(string storeName){
     string fileName = storeName + ".txt";
     ifstream file(fileName);
     return file.good();
+}
+void Room::searchRoom(){
+    if(isEmpty()){
+        cout<< "방이 존재하지 않습니다."<<endl;
+        return;
+    }
+    string name; // 검색 받을 이름
+    bool exist =false;
+    cout<< "===> 찾을 가게를 입력하세요: ";
+    cin >> name;
+    roomNode * prev = nullptr;
+    roomNode* current = head;
+    for(current =head; current != nullptr; current = cur->next){ // 데이터의 끝까지 출력
+        if(current -> storeName == name){
+            if(exist == false){
+                cout<< endl<<"Orderer   Status   Store  Bank Account   Phonenumber    Place   Time"<<endl;
+            }
+            bool exist = true;
+            cout << current-> orderer << "   " << current->status << "  " << current->storeName << "   " <<current->bank<<"   "<< current ->account << "   " << current-> phoneNum << "    " << current ->place << "    "<< current->t1.hour<<":"<<current->t1.min<<"    \n" << endl; // time 구현 못함
+        }
+    }
 }
