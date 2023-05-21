@@ -180,8 +180,7 @@ void Room::updateRoom(){
 };
 
 int Room::getStoreSeletion(){
-    return 0; //임시 변수 
-    //return this->storeSeletion;
+    return this->StoreSeletion; 
 }
 
 roomNode* Room::returnHead(){

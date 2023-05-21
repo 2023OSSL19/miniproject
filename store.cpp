@@ -1,5 +1,17 @@
 #include "Store.h"
 
+Store::Store(){
+    count =4;
+    store[0] ="교폰치킨";
+    store[1] = "덥덥팦";
+    store[2] = "어디야커피";
+    store[3] ="치코파덕";
+};
+
+Store::~Store(){
+
+};
+
 void Store ::createMenu(){
     if (count >MAX){
         cout << "저장할 수 있는 가게 개수를 초과했습니다.(최대 15개)";
@@ -47,11 +59,13 @@ void Store ::createMenu(){
         cout << "파일을 열 수 없습니다." << endl;
     } 
 };
+
 void Store::showAllStore(){
     for(int i =0; i< count ; i++){
-        cout <<  store[count]<< endl;
+        cout << i+1<<". "<< store[count]<< endl;
     }
-}
+};
+
 void Store::showMenu(string storeName){ // 메뉴 번호를 받아서 해당 음식 메뉴 출력
     string fileName = storeName + ".txt";
     ifstream file(fileName);
@@ -73,7 +87,8 @@ void Store::showMenu(string storeName){ // 메뉴 번호를 받아서 해당 음
     {
         cout << "파일을 열 수 없습니다." << endl;
     }
-}
+};
+
 void Store::updateMenu(string storeName){
     string fileName = storeName+ ".txt";
     ofstream file(fileName);
@@ -100,9 +115,10 @@ void Store::updateMenu(string storeName){
     {
         cout << "파일을 열 수 없습니다." << endl;
     }
-}
+};
+
 bool Store:: fileExists(string fileName)
 {
     ifstream file(fileName);
     return file.good();
-}
+};

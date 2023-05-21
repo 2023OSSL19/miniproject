@@ -7,9 +7,11 @@ using namespace std;
 
 class Store{
     private :
-        int count = 4;
-        string store[15] ={"교폰치킨", "덥덥팦", "어디야커피", "치코파덕"};
+        int count;
+        string store[15];
     public :
+    Store();
+    ~Store();
     void createMenu(); // 스토어 생성
     void showMenu(menu *m[], int num); // 메뉴 출력
     void updateMenu(menu *m[], int num); // 업데이트 메뉴

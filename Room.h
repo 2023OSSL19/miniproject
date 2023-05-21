@@ -21,7 +21,7 @@ struct roomNode{
     int phoneNum; // 핸드폰 번호 -> 입력
     string place; // 도착 장소 -> 입력
     struct time t1; // 마감 시간 출력용 변수 -> 입력
-    string storeSelection; //어떤 음식점을 선택할 것인가? -> 4~5개 가게 만들어야 함 -> 입력 -> 메뉴 4개 만들어야 함
+    int storeSelection; //어떤 음식점을 선택할 것인가? -> 4~5개 가게 만들어야 함 -> 입력 -> 메뉴 4개 만들어야 함
     //Order* order; // 주문을 담는 공간
     //int menuCount; // 메뉴 개수
     roomNode* next; // 다음 방 주소를 담는다
