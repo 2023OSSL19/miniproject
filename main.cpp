@@ -85,7 +85,7 @@ int main(){
                 else if (leader == "B")
                     a->deleteRoom();
                 else if (leader == "C")
-                    a->updateRoom();
+                    a->updateRoom(*c);
                 else if (leader == "D")
                     a->printRoom();
             }
