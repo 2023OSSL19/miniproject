@@ -1,8 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-//#include "Room.h"
-#include "order.h"
+#include "Room.h"
+
 
 using namespace std;
 
@@ -67,8 +67,9 @@ bool logIn(){
 
 int main(){
     //시나리오를 위한 방 하나 제작
-    Room* a = new Room;
-    Order* b = new Order;
+    Room* a = new Room();
+    Order* b = new Order();
+    Store* c = new Store();
     a->createBaseRoom();
     if(logIn()){
         cout << "\n로그인에 성공하셨습니다!" << endl;
@@ -80,7 +81,7 @@ int main(){
             if (big_selection == "A"){
                 leader = leaderSelection();
                 if(leader == "A")
-                    a->createRoom();
+                    a->createRoom(*c);
                 else if (leader == "B")
                     a->deleteRoom();
                 else if (leader == "C")

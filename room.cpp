@@ -50,18 +50,33 @@ void Room::createBaseRoom(){
         current->next = newRoom;
     }
 }
-void Room::createRoom(){
+void Room::createRoom(Store& store){
     //동적할당을 통해 새로운 노드를 만든다.
     roomNode* newRoom = new roomNode();
    //새로운 노드에 입력할 데이터를 입력받는다 (출력 + 입력)
     cout << "주문자 이름을 입력하세요: ";
     cin >> newRoom->orderer;
     newRoom->status = "방장";
+
     cout << "\n주문 가능한 가게 목록" << endl;
+    /*
     cout << "A: 교폰치킨" << endl;
     cout << "B: 덥덥팝" << endl;
     cout << "C: 어디야커피" << endl;
     cout << "D: 치코파덕" << endl;
+    */
+    store.showAllStore(); // store 안의 함수를 호출하는 방식으로 가게를 출력
+    while(1){
+        cout << "주문을 진행할 가게를 선택하세요: "; 
+        cin >> newRoom->storeName;
+        if(fileExists(newRoom->storeName)){
+            break;
+        }
+        else{
+            cout << "존재하지 않는 가게 입니다."<<endl;
+        }
+    }
+    /*
     while(1){
         cout << "주문을 진행할 가게를 선택하세요: "; 
         cin >> newRoom->storeSelection;
@@ -78,7 +93,7 @@ void Room::createRoom(){
     } else if (newRoom->storeSelection == "D") {
         newRoom->storeName = "치코파덕";
     }
-
+    */
     cout << "방장의 계좌번호를 입력하세요: ";
     cin >> newRoom->account;
     cout << "방장의 은행을 입력하세요: ";
@@ -178,18 +193,18 @@ void Room::updateRoom(){
         cout << "방을 찾을 수 없습니다." << endl;
     }
 };
-
-int Room::getStoreSeletion(){
+/*
+string Room::getStoreSeletion(){
     return this->StoreSeletion; 
 }
-
+*/
 roomNode* Room::returnHead(){
     return head;
 
 }
 
-bool fileExists(string fileName)
-{
+bool Room::fileExists(string storeName){
+    string fileName = storeName + ".txt";
     ifstream file(fileName);
     return file.good();
 }

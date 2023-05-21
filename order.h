@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include "Room.h"
 
 using namespace std;
 //주문 정보를 저장하는 구조체

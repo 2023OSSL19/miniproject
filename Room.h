@@ -1,6 +1,6 @@
-#define MAX 10 // 최대 주문 개수는 10개로 제한
-//#include "menu.h"
-//#include "order.h"
+#include "order.h"
+#include "Store.h"
+#include <iostream>
 #include <string>
 #include <fstream>
 
@@ -21,7 +21,7 @@ struct roomNode{
     int phoneNum; // 핸드폰 번호 -> 입력
     string place; // 도착 장소 -> 입력
     struct time t1; // 마감 시간 출력용 변수 -> 입력
-    int storeSelection; //어떤 음식점을 선택할 것인가? -> 4~5개 가게 만들어야 함 -> 입력 -> 메뉴 4개 만들어야 함
+    string storeSelection; //어떤 음식점을 선택할 것인가? -> 4~5개 가게 만들어야 함 -> 입력 -> 메뉴 4개 만들어야 함
     //Order* order; // 주문을 담는 공간
     //int menuCount; // 메뉴 개수
     roomNode* next; // 다음 방 주소를 담는다
@@ -40,13 +40,13 @@ class Room{
         ~Room(); // destructor
         //void searchRoom(); // 메뉴를 입력하면 방을 해당 방을 출력, 사용자에서 사용
         void createBaseRoom(); //시나리오를 위해 기본적으로 생성 된 방
-        void createRoom(); // 방 생성, 방장에서만 사용
+        void createRoom(Store& store); // 방 생성, 방장에서만 사용
         void deleteRoom(); // 방 삭제, 방장에서만 사용
         void updateRoom(); // 방 정보 업데이트, 방장에서만 사용
         void printRoom(); // 전체 방 정보 출력, 사용자에서 사용
         //void showMenu(); // 메뉴 출력 기능
         bool isEmpty(); // 방 유무 확인
-        int getStoreSeletion(); // 메뉴 번호 return
+        //string getStoreSeletion(); // 메뉴 번호 return
         roomNode* returnHead();
-        //bool fileExists(string fileName); // 파일 존재 유무 확인
+        bool fileExists(string storeName); // 파일 존재 유무 확인
 };
