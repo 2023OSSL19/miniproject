@@ -37,7 +37,8 @@ int main(){
             else if (big_selection == "B"){
                 member = memberSelection();
                 if(member == "A"){
-                    a->printRoom();
+                    c->showAllStore();
+                    a->searchRoom();
                     string name; // 검색 받을 이름
                     string storeName;
                     cout<< "===> 참가하고 싶은 방의 방장 이름을 입력하세요: ";

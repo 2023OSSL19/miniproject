@@ -32,16 +32,17 @@ Order::~Order(){
 void Order::createOrder(string storeName,string leader, Store& store){
     int money = 0;
     int menuNum;
-    int i; // menu 저장을 위한 변수
+    int i=0; // menu 저장을 위한 변수
     //동적할당을 통해 새로운 노드를 만든다.자
     orderNode* newOrder = new orderNode();
     cout << leader << "님의 " << storeName << "방에 참가하셨습니다." << endl;
     cout << "주문을 진행해 주세요." << endl;
     newOrder->roomLeader = leader;
     newOrder->storeName = storeName;
+    cout<< storeName;
     cout << "이름을 입력해주세요: ";
     cin >> newOrder-> orderer;
-    store.showMenu(storeName); // 해당 가게의 메뉴 출력
+    store.showMenu(newOrder->storeName); // 해당 가게의 메뉴 출력
     storeMenu* storeInformation= setMenuInformation(storeName);
     while(1){
         cout << "메뉴를 번호로 선택하세요(종료하려면 0 입력): ";
