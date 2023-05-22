@@ -79,6 +79,7 @@ void Store::showAllStore(){ // 모든 가게 이름을 출력
 };
 
 void Store::showMenu(string storeName){ // 가게 이름을 받아서 해당 음식 메뉴 출력
+    cout << endl;
     if(!fileExists(storeName)){  // 해당 가게가 존재하지 않을 경우
         cout << "해당 가게가 존재하지 않습니다."<<endl;
         return;    

@@ -86,6 +86,7 @@ void Room::createRoom(Store& store, string id){
     cout << "방장의 핸드폰 번호를 입력하세요: ";
     cin >> newRoom->phoneNum;
     cout << "주문을 배달 받을 장소의 주소를 입력하세요: ";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     getline(cin, newRoom->place);
     while(1){
         cout << "주문 마감 시간을 입력하세요 (x시 x분), x만 입력해주세요";

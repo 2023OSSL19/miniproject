@@ -48,7 +48,7 @@ void Order::createOrder(string storeName,string leader, Store& store, string id)
     newOrder->price =0;
     newOrder ->menuCount =0;
     while(1){
-        cout << "메뉴를 번호로 선택하세요(종료하려면 0 입력): ";
+        cout << "메뉴를 번호로 선택하세요 (종료하려면 0 입력): ";
         cin >> menuNum;
         if(menuNum==0 || i >=20){
             break;
