@@ -99,7 +99,7 @@ void Room::createRoom(Store& store, string id){
         }
     }
 
-    
+     
     //새로운 노드의 연결고리를 비워둔다.
     newRoom->next = nullptr;
     //만약 헤드뒤에 노드가 하나도 없다면 헤드 뒤로 새로 생성된 노드를 연결한다.
