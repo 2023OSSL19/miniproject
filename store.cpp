@@ -90,9 +90,9 @@ void Store::showMenu(string storeName){ // 가게 이름을 받아서 해당 음
     if (file.is_open())
     {
         int index =1;
-        cout << "- "<<storeName <<" -"<<endl;
+        cout << "- "<<storeName <<" -"<<endl; // 가게 이름 출력
         string line;
-        while (getline(file, line)){
+        while (getline(file, line)){ // 한 줄씩 읽으면서 계속 출력
             cout << index<< ". "<< line << endl;
             index++;
         }
@@ -104,8 +104,8 @@ void Store::showMenu(string storeName){ // 가게 이름을 받아서 해당 음
     }
 };
 
-void Store::updateMenu(string storeName){
-    if(!fileExists(storeName)){
+void Store::updateMenu(string storeName){ // 해당 가게의 메뉴를 덮어쓰는 방식으로 업데이트
+    if(!fileExists(storeName)){ // 파일이 있는지 확인
         cout << "해당 가게가 존재하지 않습니다."<<endl;
         return;
     }

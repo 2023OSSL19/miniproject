@@ -57,14 +57,14 @@ void Room::createRoom(Store& store, string id){
     while(1){
         cout << "주문을 진행할 가게를 선택하세요: "; 
         cin >> storeName;
-        if(fileExists(storeName)){
+        if(fileExists(storeName)){ // 해당 가게가 존재하는지 확인
             break;
         }
         else{
             cout << "존재하지 않는 가게 입니다."<<endl;
         }
     }
-    if(alreadyExistRoom(id, storeName)){
+    if(alreadyExistRoom(id, storeName)){ // 방이 중복되는지 확인
         cout<< "이미 방이 존재합니다"<<endl;
         return;
     }
@@ -91,7 +91,7 @@ void Room::createRoom(Store& store, string id){
     while(1){
         cout << "주문 마감 시간을 입력하세요 (x시 x분), x만 입력해주세요";
         cin >> newRoom -> t1.hour >> newRoom->t1.min;
-        if(newRoom ->t1.hour>=0 && newRoom ->t1.hour<24 &&newRoom->t1.min>=0&&newRoom->t1.min<60){
+        if(newRoom ->t1.hour>=0 && newRoom ->t1.hour<24 &&newRoom->t1.min>=0&&newRoom->t1.min<60){ // 시간이 잘못 입력되었을 경우
             break;
         }
         else{
@@ -121,7 +121,7 @@ void Room::createRoom(Store& store, string id){
 
 
 void Room::deleteRoom(string id){
-    if(isEmpty(id)){
+    if(isEmpty(id)){ // id로 만든 방이 존재하는지 확인
         cout<< "방이 존재하지 않습니다."<<endl;
         return;
     }
@@ -150,7 +150,7 @@ void Room::deleteRoom(string id){
 
 };
 void Room::printRoom(string id){
-    if(isEmpty(id)){
+    if(isEmpty(id)){ // id로 만든 방이 존재하는지 확인
         cout<< "방이 존재하지 않습니다."<<endl;
         return;
     }
@@ -171,7 +171,7 @@ void Room::printRoom(string id){
     }   
 }
 void Room::printAllRoom(){
-    if(isEmptyForMaster()){
+    if(isEmptyForMaster()){ // 방 자체가 존재하는지 확인
         cout<< "방이 존재하지 않습니다."<<endl;
         return;
     }
@@ -182,7 +182,7 @@ void Room::printAllRoom(){
     }
 };
 
-bool Room::isEmpty(string id){
+bool Room::isEmpty(string id){ // id로 만든 방이 있는지 확인
     if(head == nullptr){
         return true;
     }
@@ -196,14 +196,14 @@ bool Room::isEmpty(string id){
     return true;
     
 };
-bool Room::isEmptyForMaster(){
+bool Room::isEmptyForMaster(){ // 방 자체가 존재하는지 확인
     return (head == nullptr);
 }
 
 
 void Room::updateRoom(Store& store, string id){
     string storeName;
-    if(isEmpty(id)){
+    if(isEmpty(id)){ // 방 존재하는지 확인
         cout<< "방이 존재하지 않습니다."<<endl;
         return;
     }
@@ -226,14 +226,14 @@ void Room::updateRoom(Store& store, string id){
             while(1){
                 cout << "주문을 진행할 가게를 선택하세요: "; 
                 cin >> storeName;
-                if(fileExists(storeName)){
+                if(fileExists(storeName)){ // 가게가 존재하는지
                     break;
                 }
                 else{
                     cout << "존재하지 않는 가게 입니다."<<endl;
                 }
             }
-            if(alreadyExistRoom(id, storeName)){
+            if(alreadyExistRoom(id, storeName)){ // 방이 이미 존재하는지 확인ㄴ
                 cout<< "이미 방이 존재합니다"<<endl;
             }
             else{
@@ -270,13 +270,13 @@ void Room::updateRoom(Store& store, string id){
 };
 
 
-bool Room::fileExists(string storeName){
+bool Room::fileExists(string storeName){ // 가게 이름이 있는지 확인
     string fileName = storeName + ".txt";
     ifstream file(fileName);
     return file.good();
 }
 void Room::searchRoom(string id){
-    if(isEmpty(id)){
+    if(isEmpty(id)){ // 방이 존재하는지 확인
         cout<< "방이 존재하지 않습니다."<<endl;
         return;
     }
@@ -296,7 +296,7 @@ void Room::searchRoom(string id){
         }
     }
 }
-bool Room::alreadyExistRoom(string id, string storeName){
+bool Room::alreadyExistRoom(string id, string storeName){ // id로 만들 수 있는 방은 가게 마다 1개
     roomNode * prev = nullptr;
     roomNode* current = head;
     for(current =head; current != nullptr; current = current->next){ // 데이터의 끝까지 출력
@@ -307,7 +307,7 @@ bool Room::alreadyExistRoom(string id, string storeName){
     }
     return false;
 };
-void Room::searchAllRoom(){
+void Room::searchAllRoom(){ // id와 관계없이 모든 방을 출력, admin에서 사용
     if(isEmptyForMaster()){
         cout<< "방이 존재하지 않습니다."<<endl;
         return;
@@ -328,7 +328,7 @@ void Room::searchAllRoom(){
         }
     }
 }
-void Room::setStoreNameAndLeader(string *originStoreName, string *originName){
+void Room::setStoreNameAndLeader(string *originStoreName, string *originName){ //order를 위한 정보 세팅 함수
     string name; // 검색 받을 이름
     string storeName;
     while(1){
@@ -343,13 +343,15 @@ void Room::setStoreNameAndLeader(string *originStoreName, string *originName){
             current = current->next;
         }
         if (current!=nullptr){ // 값을 찾았다면
+            // 필요한 값 세팅
             *originStoreName = storeName;
             *originName = name;
             return;
         }
         else cout<< "방을 찾을 수 없습니다."<<endl;
     }
-}roomNode* Room::getRoomNodeWithStoreName(string id){
+}
+roomNode* Room::getRoomNodeWithStoreName(string id){
     string storeName;
     while(1){
         cout<< "===> 가게 이름을 입력하세요: ";
@@ -361,7 +363,7 @@ void Room::setStoreNameAndLeader(string *originStoreName, string *originName){
             current = current->next;
         }
         if (current!=nullptr){ // 값을 찾았다면
-            return current;
+            return current; // node return
         }
         else cout<< "방을 찾을 수 없습니다."<<endl;
             return nullptr;
@@ -385,13 +387,13 @@ roomNode* Room::getRoomNodeWithLeader(string id){
             return nullptr;
     } 
 }
-string Room::getStoreName( roomNode* current){
+string Room::getStoreName( roomNode* current){ // store 이름을 얻어오는 함수
     return current-> storeName;
 }
-string Room::getLeader(roomNode* current){
+string Room::getLeader(roomNode* current){ // 방장 정보를 얻어오는 함수
     return current->orderer;
 }
-bool Room::checkID(string id, roomNode* current){
+bool Room::checkID(string id, roomNode* current){ // id가 일치하는지 확인하는 함수
     if(current ->id == id ){
         return true;
     }
