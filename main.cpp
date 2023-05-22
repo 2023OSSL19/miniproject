@@ -40,6 +40,7 @@ int main(){
                         }
                         else if (selection =="C"){
                             string storeName;
+                            c->showAllStore();
                             cout <<"가게 이름을 입력하세요: ";
                             cin >> storeName;
                             c->updateMenu(storeName);

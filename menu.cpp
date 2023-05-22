@@ -38,8 +38,8 @@ string Menu::memberSelection(){
 string Menu::adminSelection(){
     string m;
     cout<< "\nA: 메뉴 출력하기"<< endl;
-    cout<< "B: 메뉴 추가하기" << endl;
-    cout<< "C: 메뉴 수정하기" << endl;
+    cout<< "B: 가게 추가하기" << endl;
+    cout<< "C: 가게 메뉴 수정하기" << endl;
     cout<< "D: 전체 방 출력하기" << endl;
     cout << "E: 전체 주문 출력" << endl;
     cout << "원하시는 기능을 선택하세요(로그아웃 하려면 0): ";

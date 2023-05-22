@@ -13,7 +13,7 @@ Store::~Store(){
 };
 
 void Store ::createMenu(){
-    if (count >MAX){
+    if (count > MAX){
         cout << "저장할 수 있는 가게 개수를 초과했습니다.(최대 15개)"; // 최대로 저장할 수 있는 가게 수는 15개
         return;
     }
@@ -27,6 +27,14 @@ void Store ::createMenu(){
     // 파일명을 입력받은 이름으로 생성
     string fileName = storeName + ".txt";
 
+    // 이미 존재하는 파일인지 확인
+    ifstream existingFile(fileName);
+    if (existingFile)
+    {
+        cout << "이미 존재하는 가게 입니다. 새로운 가게 이름을 입력해주세요." << endl;
+        return;
+    }
+
     // 파일 열기
     ofstream file(fileName);
 
@@ -35,18 +43,21 @@ void Store ::createMenu(){
         while(1){
             cout<< "메뉴: ";
             cin >> menu;
-            file << menu << " ";
+            file << menu << "\t";
+
             cout << "가격: ";
             cin >> price;
-            file << price<<endl;
-            cout<< "입력을 종료하려면 0을 입력하세요. 계속하려면 아무키나 눌러주세요"; // 0이 입력될 때까지 메뉴를 입력받을 수 있도록 설정
-            cin >>con;
+            file << price << endl;
+
+            cout << "입력을 종료하려면 0을 입력하세요. 계속하려면 아무키나 눌러주세요"; // 0이 입력될 때까지 메뉴를 입력받을 수 있도록 설정
+            cin >> con;
             if(con=='0'){
                 break;
             }
+            else {
+                getchar();
+            }
         }
-        // 메뉴 항목 작성
-
         // 파일 닫기
         file.close();
 
@@ -61,6 +72,7 @@ void Store ::createMenu(){
 };
 
 void Store::showAllStore(){ // 모든 가게 이름을 출력 
+    cout << endl;
     for(int i =0; i< count ; i++){
         cout << i+1<<". "<< store[i]<< endl;
     }
@@ -98,20 +110,28 @@ void Store::updateMenu(string storeName){
     }
     string fileName = storeName+ ".txt";
     ofstream file(fileName);
-
+    string menu;
+    char con;
+    int price;
     if (file.is_open())
     {
-        string newContent;
-        getchar();
-        while (1)
-        {
-            cout << "파일에 새로 입력할 내용을 입력하세요 (종료하려면 0):";
+        while(1){
+            cout<< "메뉴: ";
+            cin >> menu;
+            file << menu << "\t";
 
-            getline(cin, newContent);
-            if (newContent == "0"){
+            cout << "가격: ";
+            cin >> price;
+            file << price << endl;
+
+            cout << "입력을 종료하려면 0을 입력하세요. 계속하려면 아무키나 눌러주세요"; // 0이 입력될 때까지 메뉴를 입력받을 수 있도록 설정
+            cin >> con;
+            if(con=='0'){
                 break;
             }
-            file << newContent << endl;
+            else {
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
         }
         file.close();
         cout << "파일이 업데이트 되었습니다." << endl;
