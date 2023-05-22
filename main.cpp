@@ -18,7 +18,7 @@ int main(){
     Order* b = new Order();
     Store* c = new Store();
     string id;
-    a->createBaseRoom(); // 시험을 위해 제작(프로토 타입)
+    //a->createBaseRoom(); // 시험을 위해 제작(프로토 타입)
     string selection;
     while(1){
         selection = m-> loginSelection();
