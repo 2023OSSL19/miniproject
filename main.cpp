@@ -8,6 +8,8 @@
 
 using namespace std;
 
+bool logIn(string* user);
+
 int main(){
     //시나리오를 위한 방 하나 제작
     Menu* m = new Menu();
@@ -180,4 +182,3 @@ int main(){
 
     return 0;
 }
-

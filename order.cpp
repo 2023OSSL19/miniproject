@@ -116,37 +116,12 @@ void Order::deleteOrder(string id){
 
 };
 
-/*
-void Order::printOrder() {
-    orderNode *cur = head; // cur 포인터를 head로 초기화
 
-<<<<<<< HEAD
-    // cout << endl << "team   Store  Bank Account   Phonenumber    Place   Time" << endl;
-    while (cur != nullptr) { // cur가 nullptr이 아닐 때까지 반복
-        cout << "참가한 방의 방장: " << cur->roomLeader << endl;
-        cout << "참가한 가게: " << cur->storeName << endl;
-        cout << cur->storeName << "   " << cur->menu << "   " << cur->price << "   " << cur->phoneNum << "   " << cur->accout << endl; // time 구현 못함
-        cout << endl;
-        cur = cur->next; // 다음 노드로 이동
-
-};
-
-
-
-//방정보보기 수정
-//방만들 때 내 order 추가하는 거 수정
-//order RUD 기능 추가
-
-*/
-void Order::printOrder(){
-    string name;
-=======
 void Order::printOrder(string id){
     if(isEmpty(id)){
         cout <<"주문 목록이 없습니다!"<<endl;
         return;
     }
->>>>>>> e9acd9bced5c6efad89583527903b4e7817b3646
     bool exist =false;
     orderNode *prev = nullptr;
     orderNode *cur = head;
@@ -190,8 +165,6 @@ storeMenu* Order::setMenuInformation(string storeName, orderNode *o){
     return storeInformation;
 
 }
-<<<<<<< HEAD
-=======
 bool Order::alreadyExistOrder(string id, string storeName){
     orderNode * prev = nullptr;
     orderNode* current = head;
@@ -329,4 +302,3 @@ bool Order::isEmpty(string id){
 bool Order::isEmptyForMaster(){
     return (head==nullptr);
 }
->>>>>>> e9acd9bced5c6efad89583527903b4e7817b3646
