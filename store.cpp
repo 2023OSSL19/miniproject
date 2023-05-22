@@ -35,7 +35,7 @@ void Store ::createMenu(){
         while(1){
             cout<< "메뉴: ";
             cin >> menu;
-            file << menu;
+            file << menu << " ";
             cout << "가격: ";
             cin >> price;
             file << price<<endl;
@@ -89,10 +89,6 @@ void Store::showMenu(string storeName){ // 가게 이름을 받아서 해당 음
     {
         cout << "파일을 열 수 없습니다." << endl;
     }
-            
-
-
-
 };
 
 void Store::updateMenu(string storeName){
@@ -106,11 +102,13 @@ void Store::updateMenu(string storeName){
     if (file.is_open())
     {
         string newContent;
-        cout << "파일에 새로 입력할 내용을 입력하세요 (종료하려면 빈 줄 입력):" << endl;
-        while (getline(cin, newContent))
+        getchar();
+        while (1)
         {
-            if (newContent.empty())
-            {
+            cout << "파일에 새로 입력할 내용을 입력하세요 (종료하려면 0):";
+
+            getline(cin, newContent);
+            if (newContent == "0"){
                 break;
             }
             file << newContent << endl;

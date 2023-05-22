@@ -7,8 +7,8 @@ using namespace std;
 
 class Store{
     private :
-        int count;
-        string store[15];
+        int count; // 스토어가 몇 개가 있는지
+        string store[15]; // store의 이름을 저장하는 배열
     public :
         Store();
         ~Store();

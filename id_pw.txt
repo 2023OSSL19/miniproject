@@ -2,3 +2,4 @@ id              pw
 jineous419      1234
 hyukjin0419     1234
 admin           admin
+jin10020 1234
