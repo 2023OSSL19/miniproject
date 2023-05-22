@@ -107,7 +107,7 @@ void Order::deleteOrder(){
 
 };
 
-<<<<<<< HEAD
+/*
 void Order::printOrder() {
     orderNode *cur = head; // cur 포인터를 head로 초기화
 
@@ -126,8 +126,8 @@ void Order::printOrder() {
 //방정보보기 수정
 //방만들 때 내 order 추가하는 거 수정
 //order RUD 기능 추가
-=======
 
+*/
 void Order::printOrder(){
     string name;
     bool exist =false;
@@ -176,4 +176,3 @@ storeMenu* Order::setMenuInformation(string storeName){
     return storeInformation;
 
 }
->>>>>>> f802c1aa0dfa70933f8643dfffe771c4b794f708
