@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <iomanip>
 #include "Room.h"
 
 Room::Room(){
@@ -27,9 +28,9 @@ void Room::createBaseRoom(){
     newRoom->orderer = "handong";
     newRoom->storeName = "교폰치킨";
     newRoom->account = 123456789;
-    newRoom -> bank = "기업";
+    newRoom -> bank = "kakao";
     newRoom->phoneNum = 01011111111;
-    newRoom->place = "한동대 로뎀관";
+    newRoom->place = "handong";
     newRoom->t1.hour = 12;
     newRoom->t1.min = 10;
     newRoom -> id = "hyukjin0419";
@@ -160,10 +161,10 @@ void Room::printRoom(string id){
     for(current =head; current != nullptr; current = current->next){ // 데이터의 끝까지 출력
         if(current -> id == id){
             if(exist == false){
-                cout<< endl<<"Ordere   Store  Bank Account   Phonenumber    Place   Time"<<endl;
+                cout<<endl<<setw(10)<<left<<"Orderer" << setw(10)<<left<< "Store"<< setw(10)<<left<< "Bank"<< setw(10)<<left<<"Account"  << setw(12)<<left<<"Phonenumber" <<setw(10)<<left<<"Place"   <<setw(10)<<left<<"Time"<<endl;
             }
             exist = true;
-            cout << current-> orderer << "  " << current->storeName << "   " <<current->bank<<"   "<< current ->account << "   " << current-> phoneNum << "    " << current ->place << "    "<< current->t1.hour<<":"<<current->t1.min << endl;
+            cout <<left<<setw(10) <<current-> orderer << setw(15)<<left<<current->storeName  <<setw(10)<<left<<current->bank<< setw(10)<<left<<current ->account  << setw(10)<<left<<current-> phoneNum  << setw(10)<<left<<current ->place <<setw(0)<<left<<current->t1.hour<<setw(0)<<left<<":"<<current->t1.min << endl;
         }
     }
     if(exist ==false){
@@ -176,9 +177,9 @@ void Room::printAllRoom(){
         return;
     }
     roomNode *cur = nullptr;
-    cout<< endl<<"Orderer   Store  Bank Account   Phonenumber    Place   Time"<<endl;
+    cout<<endl<<setw(10)<<left<<"Orderer" << setw(10)<<left<< "Store"<< setw(10)<<left<< "Bank"<< setw(10)<<left<<"Account"  << setw(12)<<left<<"Phonenumber" <<setw(10)<<left<<"Place"   <<setw(10)<<left<<"Time"<<endl;
     for(cur =head; cur != nullptr; cur = cur->next){ // 데이터의 끝까지 출력
-        cout << cur-> orderer  << "  " << cur->storeName << "   " <<cur->bank<<"   "<< cur ->account << "   " << cur-> phoneNum << "    " << cur ->place << "    "<< cur->t1.hour<<":"<<cur->t1.min << endl;
+        cout <<left<<setw(10) <<cur-> orderer << setw(15)<<left<<cur->storeName  <<setw(10)<<left<<cur->bank<< setw(10)<<left<<cur ->account  << setw(10)<<left<<cur-> phoneNum  << setw(10)<<left<<cur ->place <<setw(0)<<left<<cur->t1.hour<<setw(0)<<left<<":"<<cur->t1.min << endl;
     }
 };
 
@@ -289,10 +290,10 @@ void Room::searchRoom(string id){
     for(current =head; current != nullptr; current = current->next){ // 데이터의 끝까지 출력
         if(current -> storeName == name && current ->id == id){
             if(exist == false){
-                cout<< endl<<"Ordere   Store  Bank Account   Phonenumber    Place   Time"<<endl;
+                cout<<endl<<setw(10)<<left<<"Orderer" << setw(10)<<left<< "Store"<< setw(10)<<left<< "Bank"<< setw(10)<<left<<"Account"  << setw(12)<<left<<"Phonenumber" <<setw(10)<<left<<"Place"   <<setw(10)<<left<<"Time"<<endl;
             }
             exist = true;
-            cout << current-> orderer << "  " << current->storeName << "   " <<current->bank<<"   "<< current ->account << "   " << current-> phoneNum << "    " << current ->place << "    "<< current->t1.hour<<":"<<current->t1.min<<"    \n" << endl; // time 구현 못함
+            cout <<left<<setw(10) <<current-> orderer << setw(15)<<left<<current->storeName  <<setw(10)<<left<<current->bank<< setw(10)<<left<<current ->account  << setw(10)<<left<<current-> phoneNum  << setw(10)<<left<<current ->place <<setw(0)<<left<<current->t1.hour<<setw(0)<<left<<":"<<current->t1.min << endl;
         }
     }
 }
@@ -321,10 +322,10 @@ void Room::searchAllRoom(){ // id와 관계없이 모든 방을 출력, admin에
     for(current =head; current != nullptr; current = current->next){ // 데이터의 끝까지 출력
         if(current -> storeName == name){
             if(exist == false){
-                cout<< endl<<"Ordere   Store  Bank Account   Phonenumber    Place   Time"<<endl;
+                cout<<endl<<setw(10)<<left<<"Orderer" << setw(10)<<left<< "Store"<< setw(10)<<left<< "Bank"<< setw(10)<<left<<"Account"  << setw(12)<<left<<"Phonenumber" <<setw(10)<<left<<"Place"   <<setw(10)<<left<<"Time"<<endl;
             }
             exist = true;
-            cout << current-> orderer << "  " << current->storeName << "   " <<current->bank<<"   "<< current ->account << "   " << current-> phoneNum << "    " << current ->place << "    "<< current->t1.hour<<":"<<current->t1.min<<"    \n" << endl; // time 구현 못함
+            cout <<left<<setw(10) <<current-> orderer << setw(15)<<left<<current->storeName  <<setw(10)<<left<<current->bank<< setw(10)<<left<<current ->account  << setw(10)<<left<<current-> phoneNum  << setw(10)<<left<<current ->place <<setw(0)<<left<<current->t1.hour<<setw(0)<<left<<":"<<current->t1.min << endl;
         }
     }
 }

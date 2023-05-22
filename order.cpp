@@ -86,7 +86,6 @@ void Order::createOrder(string storeName,string leader, Store& store, string id)
         current->next = newOrder;
     }
     count++;
-    delete storeInformation; // 임시 구조체 배열 삭제
     cout << "\n주문이 추가되었습니다!" << endl;
 };
 
@@ -130,10 +129,10 @@ void Order::printOrder(string id){
     for(cur =head; cur != nullptr; cur = cur->next){ // 데이터의 끝까지 출력
         if(cur -> id == id){ // id가 같으면 모두 출력
             if(exist == false){ // 처음만 밑의 줄 출력
-                cout<< endl<<"RoomLeader   Store    Orderer     PhoneNum   Bank  Account     Price      menu"<<endl;
+                cout<< endl<<setw(11)<<left<<"RoomLeader" <<setw(10)<<left << "Store" <<setw(10) <<left  <<"Orderer"    <<setw(10)<<left <<"PhoneNum" <<setw(10)<<left<<  "Bank"<<setw(10)<<left << "Account"<<setw(10)<<left <<"Price"<<setw(10)<<left<<"menu"<<endl;
             }
             exist = true;
-            cout << cur->roomLeader<< "   "<<cur->storeName<<"   "<<cur-> orderer << "   " << cur->phoneNum << "  " <<cur->bank<<"    "<< cur-> accout<< "   " <<cur->price<<"   ";
+            cout << setw(11)<< left<<cur->roomLeader<<setw(15)<< left<<cur->storeName<<setw(10)<<left<<cur-> orderer <<setw(10)<<left<< cur->phoneNum <<setw(10)<<left<<cur->bank<< setw(10)<<left<<cur-> accout <<setw(10)<<left<<cur->price;
             for(int i=0; i<cur->menuCount; i++){
                 cout<< cur->menu[i];
                 if(!(i == cur->menuCount-1)){
@@ -225,7 +224,6 @@ void Order::updateOrder(Store& store , string id){
         cout << "핸드폰 번호를 입력하세요: ";
         cin >> current->phoneNum;
         cout << "업데이트가 완료 되었습니다." << endl;
-        delete storeInformation;
     } 
     else{
         cout << "방을 찾을 수 없습니다." << endl;
@@ -242,10 +240,10 @@ void Order::printOrderForMaster(string name, string storeName){
     for(cur =head; cur != nullptr; cur = cur->next){ // 데이터의 끝까지 출력하면서 정보를 출력
         if(cur -> roomLeader == name && cur ->storeName == storeName){
             if(exist == false){
-                cout<< endl<<"RoomLeader   Store    Orderer     PhoneNum   Bank  Account     Price      menu"<<endl;
+                cout<< endl<<setw(11)<<left<<"RoomLeader" <<setw(10)<<left << "Store" <<setw(10) <<left  <<"Orderer"    <<setw(10)<<left <<"PhoneNum" <<setw(10)<<left<<  "Bank"<<setw(10)<<left << "Account"<<setw(10)<<left <<"Price"<<setw(10)<<left<<"menu"<<endl;
             }
             exist = true;
-            cout << cur->roomLeader<< "   "<<cur->storeName<<"   "<<cur-> orderer << "   " << cur->phoneNum << "  " <<cur->bank<<"    "<< cur-> accout<< "   " <<cur->price<<"   ";
+            cout << setw(11)<< left<<cur->roomLeader<<setw(15)<< left<<cur->storeName<<setw(10)<<left<<cur-> orderer <<setw(10)<<left<< cur->phoneNum <<setw(10)<<left<<cur->bank<< setw(10)<<left<<cur-> accout <<setw(10)<<left<<cur->price;
             for(int i=0; i<cur->menuCount; i++){
                 cout<< cur->menu[i];
                 if(!(i == cur->menuCount-1)){
@@ -270,10 +268,10 @@ void Order::printAllOrder(){ // admin에서 보통 사용
     orderNode *cur = head;
     for(cur =head; cur != nullptr; cur = cur->next){ // 데이터의 끝까지 출력
         if(exist == false){
-            cout<< endl<<"RoomLeader   Store    Orderer     PhoneNum   Bank  Account     Price      menu"<<endl;
+            cout<< endl<<setw(11)<<left<<"RoomLeader" <<setw(10)<<left << "Store" <<setw(10) <<left  <<"Orderer"    <<setw(10)<<left <<"PhoneNum" <<setw(10)<<left<<  "Bank"<<setw(10)<<left << "Account"<<setw(10)<<left <<"Price"<<setw(10)<<left<<"menu"<<endl;
         }
         exist = true;
-        cout << cur->roomLeader<< "   "<<cur->storeName<<"   "<<cur-> orderer << "   " << cur->phoneNum << "  " <<cur->bank<<"    "<< cur-> accout<< "   " <<cur->price<<"   ";
+        cout << setw(11)<< left<<cur->roomLeader<<setw(15)<< left<<cur->storeName<<setw(10)<<left<<cur-> orderer <<setw(10)<<left<< cur->phoneNum <<setw(10)<<left<<cur->bank<< setw(10)<<left<<cur-> accout <<setw(10)<<left<<cur->price;
         for(int i=0; i<cur->menuCount; i++){
             cout<< cur->menu[i];
             if(!(i == cur->menuCount-1)){
