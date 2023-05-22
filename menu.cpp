@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include "Menu.h"
-string Menu::fristSelection(){
+string Menu::fristSelection(){ // 로그인 이후 나오는 화면
     string m;
     cout << "\nA: 방장 권한으로 참여하기" << endl;
     cout << "B: 팀원 권한으로 참여하기" << endl;
@@ -10,7 +10,7 @@ string Menu::fristSelection(){
 
     return m;
 }
-string Menu::leaderSelection(){
+string Menu::leaderSelection(){ // 방장 메뉴
     string m;
     cout << "\nA: 방 만들기" << endl;
     cout << "B: 방정보 수정하기" << endl;
@@ -23,7 +23,7 @@ string Menu::leaderSelection(){
     cin >> m;
     return m;
 }
-string Menu::memberSelection(){
+string Menu::memberSelection(){ // 멤버 기능
     string m;
     cout << "\nA: 주문 추가하기" << endl;
     cout << "B: 주문 수정하기" << endl;
@@ -35,7 +35,7 @@ string Menu::memberSelection(){
 
     return m;
 }
-string Menu::adminSelection(){
+string Menu::adminSelection(){ // 관리자 기능
     string m;
     cout<< "\nA: 메뉴 출력하기"<< endl;
     cout<< "B: 가게 추가하기" << endl;
@@ -47,7 +47,7 @@ string Menu::adminSelection(){
     return m;
 
 }
-string Menu::loginSelection(){
+string Menu::loginSelection(){ // 초기 로그인 화면
     string m;
     cout<< "\nA: 로그인하기"<< endl;
     cout << "B: 회원 가입하기" <<endl;

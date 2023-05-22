@@ -21,7 +21,7 @@ struct orderNode{
 
 //메뉴판 정보를 불러오기 위한 구조체
 struct storeMenu{
-    string menuName;
+    string menuName; // 메뉴
     int price;
 };
 

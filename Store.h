@@ -10,8 +10,8 @@ class Store{
         int count; // 스토어가 몇 개가 있는지
         string store[15]; // store의 이름을 저장하는 배열
     public :
-        Store();
-        ~Store();
+        Store(); // constructor
+        ~Store(); // destructor
         void createMenu(); // 스토어를 생성, 메뉴를 txt 파일에 저장
         void showMenu(string storeName); // 가게를 입력받아 메뉴를 출력
         void updateMenu(string storeName); // 가게를 입력받아 메뉴를 업데이트

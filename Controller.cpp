@@ -1,8 +1,5 @@
 #include "Controller.h"
-Controller::Controller(){
-    count =3;
-}
-bool Controller::logIn(string *user){
+bool Controller::logIn(string *user){ // 로그인 기능 구현
     string inputId;
     string inputPw;
     char login;
@@ -17,9 +14,9 @@ bool Controller::logIn(string *user){
     ifstream inputFile("id_pw.txt");
     string id, pw;
 
-    while(inputFile >> id >> pw){
-        if (id == inputId && pw == inputPw){
-            *user = inputId;
+    while(inputFile >> id >> pw){ // 한 줄씩 읽어서 id와 pw에 넣고
+        if (id == inputId && pw == inputPw){ 
+            *user = inputId; // 일치한다면 id를 부여
             return true;
         }
 
@@ -27,17 +24,13 @@ bool Controller::logIn(string *user){
     return false;
 }
 void Controller ::join(){
-    if (count >15){
-        cout << "저장할 수 있는 id를 초과했습니다.(최대 15개)"; // 최대로 저장할 수 있는 가게 수는 15개
-        return;
-    }
     string id;
     string pw;
     cout << "id? ";
     cin >> id;
     cout << "pw? ";
     cin >> pw;
-    ofstream file("id_pw.txt", ios::app);
+    ofstream file("id_pw.txt", ios::app); // 추가하기로 파일을 연다.
 
     if (file.is_open()) {
         // id와 pw를 파일에 추가
@@ -50,5 +43,4 @@ void Controller ::join(){
     } else {
         cerr << "Failed to open the file." << endl;
     }
-    count ++;
 };

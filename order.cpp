@@ -9,7 +9,7 @@ using namespace std;
 
 #define Max 20
 
-Order::Order(){
+Order::Order(){ // 초기값 세팅
     head = nullptr;
     count = 0;
 };
