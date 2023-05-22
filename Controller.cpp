@@ -1,6 +1,6 @@
 #include "Controller.h"
 Controller::Controller(){
-    count =3;
+    count =4;
 }
 bool Controller::logIn(string *user){
     string inputId;
