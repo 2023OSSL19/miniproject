@@ -31,7 +31,7 @@ void Order::createOrder(string storeName,string leader, Store& store, string id)
     int menuNum;
     int i=0; // menu 저장을 위한 변수
     //동적할당을 통해 새로운 노드를 만든다.
-    if(alreadyExistOrder(id, storeName)){
+    if(alreadyExistOrder(id, storeName)){ // 사용자는 가게마다 한 개씩 방을 만들 수 있음
         cout << "이미 방이 존재합니다."<<endl;
         return;
     }
@@ -44,20 +44,21 @@ void Order::createOrder(string storeName,string leader, Store& store, string id)
     cout << "이름을 입력해주세요: ";
     cin >> newOrder-> orderer;
     store.showMenu(newOrder->storeName); // 해당 가게의 메뉴 출력
-    storeMenu* storeInformation= setMenuInformation(storeName, newOrder);
-    newOrder->price =0;
+    storeMenu* storeInformation= setMenuInformation(storeName, newOrder); // 해당 가게의 가격과 메뉴 이름을 struct 배열에 저장
+    newOrder->price =0; 
     newOrder ->menuCount =0;
     while(1){
         cout << "메뉴를 번호로 선택하세요 (종료하려면 0 입력): ";
         cin >> menuNum;
-        if(menuNum==0 || i >=20){
+        if(menuNum==0 || i >=20){ // menuNum이 0이거나 최대 넣을 수 있는 계수는 20개
             break;
         }
-        if(menuNum>20|| newOrder->menuKind<menuNum){
+        if(menuNum>20|| newOrder->menuKind<menuNum){ // 잘못 입력되었을 경우
             cout << "다시 입력해주세요."<<endl;
             continue;
         }
-        newOrder->price += storeInformation[menuNum-1].price;
+        // price와 메뉴이름을 추가
+        newOrder->price += storeInformation[menuNum-1].price; 
         newOrder -> menu[i] = storeInformation[menuNum-1].menuName;
         newOrder->menuCount++;
         i++;
@@ -85,15 +86,16 @@ void Order::createOrder(string storeName,string leader, Store& store, string id)
         current->next = newOrder;
     }
     count++;
+    delete storeInformation; // 임시 구조체 배열 삭제
     cout << "\n주문이 추가되었습니다!" << endl;
 };
 
 void Order::deleteOrder(string id){
-    if(isEmpty(id)){
+    if(isEmpty(id)){ // 해당 id로 만든 주문이 없으면 취소
         cout <<"주문 목록이 없습니다!"<<endl;
         return;
     }
-    printOrder(id);
+    printOrder(id); // order를 출력
     string storeName; // 검색 받을 가게 이름
     cout<<"===> 삭제할 주문의 가게 이름을 입력하세요: ";
     cin >> storeName;
@@ -118,7 +120,7 @@ void Order::deleteOrder(string id){
 
 
 void Order::printOrder(string id){
-    if(isEmpty(id)){
+    if(isEmpty(id)){ // id로 만든 주문이 없으면 취소
         cout <<"주문 목록이 없습니다!"<<endl;
         return;
     }
@@ -126,8 +128,8 @@ void Order::printOrder(string id){
     orderNode *prev = nullptr;
     orderNode *cur = head;
     for(cur =head; cur != nullptr; cur = cur->next){ // 데이터의 끝까지 출력
-        if(cur -> id == id){
-            if(exist == false){
+        if(cur -> id == id){ // id가 같으면 모두 출력
+            if(exist == false){ // 처음만 밑의 줄 출력
                 cout<< endl<<"RoomLeader   Store    Orderer     PhoneNum   Bank  Account     Price      menu"<<endl;
             }
             exist = true;
@@ -149,23 +151,23 @@ void Order::printOrder(string id){
 };
 
 storeMenu* Order::setMenuInformation(string storeName, orderNode *o){
-    storeMenu* storeInformation = new storeMenu[Max];
-    string fileName = storeName +".txt";
+    storeMenu* storeInformation = new storeMenu[Max]; // 받을 struct 선언
+    string fileName = storeName +".txt"; // file name 설정
     ifstream file(fileName);
     int index =0;
     string menuName;
     int price;
-    while(index <20 && file >>menuName >>price){
+    while(index <20 && file >>menuName >>price){ // 줄을 읽어서 이름과 가격을 넣음
         storeInformation[index].menuName = menuName;
         storeInformation[index].price = price;
         index++;
     }
-    o->menuKind = index;
+    o->menuKind = index; // 메뉴 종류가 몇 가지인지 부여
     file.close();
     return storeInformation;
 
 }
-bool Order::alreadyExistOrder(string id, string storeName){
+bool Order::alreadyExistOrder(string id, string storeName){ // 한 id로 만들 수 있는 방은 가게마나 한 개씩임, 두 값을 동시에 가지면 true
     orderNode * prev = nullptr;
     orderNode* current = head;
     for(current =head; current != nullptr; current = current->next){ // 데이터의 끝까지 출력
@@ -177,7 +179,7 @@ bool Order::alreadyExistOrder(string id, string storeName){
     return false;
 }
 void Order::updateOrder(Store& store , string id){
-    if(isEmpty(id)){
+    if(isEmpty(id)){ // id로 만든 주문이 없으면 취소
         cout <<"주문 목록이 없습니다!"<<endl;
         return;
     }
@@ -198,16 +200,16 @@ void Order::updateOrder(Store& store , string id){
         cout << "이름을 입력해주세요: ";
         cin >> current-> orderer;
         store.showMenu(current->storeName); // 해당 가게의 메뉴 출력
-        storeMenu* storeInformation= setMenuInformation(current->storeName, current);
+        storeMenu* storeInformation= setMenuInformation(current->storeName, current); // 가격과 메뉴 이름 세팅
         current->price =0;
         current->menuCount =0;
         while(1){
             cout << "메뉴를 번호로 선택하세요(종료하려면 0 입력): ";
             cin >> menuNum;
-            if(menuNum==0 || i >=20){
+            if(menuNum==0 || i >=20){ // 0이거나 최대 개수를 넘으면 취소
                 break;
             }
-            if(menuNum>20|| current->menuKind<menuNum){
+            if(menuNum>20|| current->menuKind<menuNum){ // 잘못 되었을 경우
                 cout << "다시 입력해주세요."<<endl;
                 continue;
             }
@@ -223,20 +225,21 @@ void Order::updateOrder(Store& store , string id){
         cout << "핸드폰 번호를 입력하세요: ";
         cin >> current->phoneNum;
         cout << "업데이트가 완료 되었습니다." << endl;
+        delete storeInformation;
     } 
     else{
         cout << "방을 찾을 수 없습니다." << endl;
     }
 }
 void Order::printOrderForMaster(string name, string storeName){
-    if(isEmptyForMaster()){
+    if(isEmptyForMaster()){ // 주문목록 자체가 없으면 취소
         cout <<"주문 목록이 없습니다!"<<endl;
         return;
     }
     bool exist =false;
     orderNode *prev = nullptr;
     orderNode *cur = head;
-    for(cur =head; cur != nullptr; cur = cur->next){ // 데이터의 끝까지 출력
+    for(cur =head; cur != nullptr; cur = cur->next){ // 데이터의 끝까지 출력하면서 정보를 출력
         if(cur -> roomLeader == name && cur ->storeName == storeName){
             if(exist == false){
                 cout<< endl<<"RoomLeader   Store    Orderer     PhoneNum   Bank  Account     Price      menu"<<endl;
@@ -257,8 +260,8 @@ void Order::printOrderForMaster(string name, string storeName){
         cout<< "해당 주문이 존재하지 않습니다."<< endl;
     } 
 }
-void Order::printAllOrder(){
-    if(isEmptyForMaster()){
+void Order::printAllOrder(){ // admin에서 보통 사용
+    if(isEmptyForMaster()){ // 주문 목록 자체가 없으면 취소
         cout <<"주문 목록이 없습니다!"<<endl;
         return;
     }
@@ -285,7 +288,7 @@ void Order::printAllOrder(){
     }
 
 };
-bool Order::isEmpty(string id){
+bool Order::isEmpty(string id){ // id로 만든 주문 목록이 있는지 확인
     if(head == nullptr){
         return true;
     }
@@ -299,6 +302,6 @@ bool Order::isEmpty(string id){
     return true;
     
 };
-bool Order::isEmptyForMaster(){
+bool Order::isEmptyForMaster(){ // 주문이 있는지
     return (head==nullptr);
 }
