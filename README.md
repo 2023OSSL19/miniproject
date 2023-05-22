@@ -10,7 +10,7 @@
   ### 관리자 기능
     - 배달 받을 수 있는 가게의 종류와 메뉴를 관리한다.
     - 이후 배달의 민족등 다른 어플과 연계할 수 있도록 업데이트 할 예정
-    '''
+    ```
     string Menu::adminSelection(){
     string m;
     cout<< "\nA: 메뉴 출력하기"<< endl;
@@ -22,10 +22,10 @@
     cin >> m;
     return m;
     }
-    '''
+    ```
   ### 방장 기능
     - 배달 받을 수 있는 가게의 종류를 선택하고 팀원이 참가할 수 있는 방을 만든다.
-    '''
+    ```
     string Menu::leaderSelection(){
     string m;
     cout << "\nA: 방 만들기" << endl;
@@ -39,10 +39,10 @@
     cin >> m;
     return m;
     }
-    '''
+    ```
   ### 팀원 기능
     - 만들어진 방에 참가하여 주문한다.
-    '''
+    ```
     string Menu::memberSelection(){
     string m;
     cout << "\nA: 주문 추가하기" << endl;
@@ -55,11 +55,11 @@
 
     return m;
     }
-    '''
+    ```
   ### 공통 기능
     - 로그인
     - 로그인을 통해 주문 정보에 접근 범위를 제한한다. 다른 id로 로그인하여 추가한 정보들에 부분적으로 접근과 수정을 제한한다.
-    '''
+    ```
     string Menu::loginSelection(){
     string m;
     cout<< "\nA: 로그인하기"<< endl;
@@ -68,8 +68,8 @@
     cin >> m;
     return m;
     }
-    '''
-    '''
+    ```
+    ```
     string Menu::fristSelection(){
     string m;
     cout << "\nA: 방장 권한으로 참여하기" << endl;
@@ -79,7 +79,7 @@
 
     return m;
     }
-    '''
+    ```
 
  
 ## 개발 환경 및 언어
